@@ -77,3 +77,105 @@ export const projects = [
 		datePosted: new Date()
 	}
 ];
+
+export const annotations = [
+	{
+		route: '/',
+		screenshot: 'https://jimmyrose.me/wp-content/uploads/2020/11/screen-shot-2020-11-16-at-1.53.29-pm-2--1.jpg',
+		annotations: [
+			{
+				route: '/',
+				point: { mouseX: 200, mouseY: 399 },
+				message: 'This is the first message',
+				timePosted: new Date(),
+				testerName: 'John frank',
+				sessionID: '#378463'
+			},
+			{
+				route: '/',
+				point: { mouseX: 500, mouseY: 123 },
+				message: 'This is the second message',
+				timePosted: new Date(),
+				testerName: 'Jason Vorhees',
+				sessionID: '#378463'
+			},
+			{
+				route: '/',
+				point: { mouseX: 100, mouseY: 39 },
+				message: 'This is the third susan message',
+				timePosted: new Date(),
+				testerName: 'Susan collins frank',
+				sessionID: '#378463'
+			}
+		]
+	},
+	{
+		route: '/contact',
+		screenshot: 'https://www.blogtyrant.com/wp-content/uploads/2019/12/grammarly-contact-page-wide.png',
+		annotations: [
+			{
+				route: '/',
+				point: { mouseX: 120, mouseY: 283 },
+				message: 'The contact page needs some work',
+				timePosted: new Date(),
+				testerName: 'Susan collins frank',
+				sessionID: '#378463'
+			}
+		]
+	}
+];
+
+export const feedback = [
+	{
+		route: '/',
+		feedback: [
+			{
+				id: '1',
+				title: 'Microscope note title',
+				type: 'feature request',
+				message: 'Can we add a microscope',
+				route: '/',
+				testerName: 'susan',
+				timePosted: new Date()
+			},
+			{
+				id: '1pisd',
+				title: 'Tracker title',
+				type: 'feature request',
+				message: 'Have a tracker',
+				route: '/',
+				testerName: 'John',
+				timePosted: new Date()
+			},
+			{
+				id: '1ewe',
+				title: 'The searchbar',
+				type: 'error',
+				message: 'Searchbar not working',
+				route: '/',
+				testerName: 'John',
+				timePosted: new Date()
+			},
+			{
+				id: '1923',
+				title: 'Button title',
+				type: 'note',
+				message: 'The button is red',
+				route: '/',
+				testerName: 'Frank',
+				timePosted: new Date()
+			}
+		]
+	}
+];
+
+export const preQuestionnaireResponse = [];
+
+export const postQuestionnaireResponse = [];
+
+export const response = {
+	annotations,
+	feedback,
+	preQuestionnaire: preQuestionnaireResponse,
+	postQuestionnaire: postQuestionnaireResponse
+};

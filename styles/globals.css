@@ -28,3 +28,21 @@ input,
 button {
 	font-size: 1rem;
 }
+
+input,
+select,
+textarea {
+	display: block;
+	border: 2px solid #d8d8d8;
+	background: none;
+	border-radius: 5px;
+	padding: 10px 15px;
+	font-size: 1rem;
+}
+
+.whiteboard {
+	box-shadow: var(--boxShadow);
+	padding: 15px;
+	border-radius: 5px;
+	background: #fff;
+}

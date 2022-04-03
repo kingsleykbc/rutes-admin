@@ -10,7 +10,6 @@ const ViewProjectLayout = ({ children }) => {
 
 	return (
 		<div className={classnames(['ViewProjectLayout', { sidebarOff: toggleSidebar }])}>
-
 			{/* TOGGLE ICON */}
 			<div className='toggleButton' onClick={() => setToggleSidebar(!toggleSidebar)}>
 				<IcToggle />
@@ -22,23 +21,7 @@ const ViewProjectLayout = ({ children }) => {
 			</aside>
 
 			{/* CONTENT */}
-			<div className='content'>
-				<div style={{height: "80px"}}>Lorem</div>
-				<div style={{height: "80px"}}>Lorem</div>
-				<div style={{height: "80px"}}>Lorem</div>
-				<div style={{height: "80px"}}>Lorem</div>
-				<div style={{height: "80px"}}>Lorem</div>
-				<div style={{height: "80px"}}>Lorem</div>
-				<div style={{height: "80px"}}>Lorem</div>
-				<div style={{height: "80px"}}>Lorem</div>
-				<div style={{height: "80px"}}>Lorem</div>
-				<div style={{height: "80px"}}>Lorem</div>
-				<div style={{height: "80px"}}>Lorem</div>
-				<div style={{height: "80px"}}>Lorem</div>
-				<div style={{height: "80px"}}>Lorem</div>
-				<div style={{height: "80px"}}>Lorem</div>
-				{children}
-			</div>
+			<div className='content'>{children}</div>
 
 			{/* STYLE */}
 			<style jsx>{`
@@ -59,6 +42,9 @@ const ViewProjectLayout = ({ children }) => {
 					position: relative;
 					left: 300px;
 					width: calc(100% - 300px);
+					padding-bottom: 50px;
+					background: var(--faintColor);
+					min-height: calc(${height + ' - '} 56px);
 				}
 
 				aside,
@@ -105,6 +91,7 @@ const ViewProjectLayout = ({ children }) => {
 					.content,
 					aside {
 						padding-top: 70px;
+						box-shadow: var(--boxShadow);
 					}
 				}
 			`}</style>

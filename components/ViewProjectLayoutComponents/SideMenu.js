@@ -55,8 +55,7 @@ const MenuItem = ({ icon, label, path }) => {
 				:global(.MenuItem) {
 					display: flex;
 					align-items: center;
-					border-top: var(--border);
-					padding: 20px;
+					padding: 15px;
 					gap: 17px;
 				}
 
@@ -70,7 +69,9 @@ const MenuItem = ({ icon, label, path }) => {
 
 				:global(.MenuItem.active) {
 					background: #fff;
+					border-radius: 5px;
 					border-left: 5px solid var(--primaryColor);
+					box-shadow: var(--boxShadow);
 				}
 
 				.icon {
