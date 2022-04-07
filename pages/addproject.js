@@ -1,11 +1,12 @@
 import React from 'react';
+import AddProject from '../components/AddProject';
 
 const addproject = () => {
-  return (
-    <div>
-      ADD PROJECT
-    </div>
-  );
+	return (
+		<div className='addproject'>
+			<AddProject />
+		</div>
+	);
 };
 
 export default addproject;

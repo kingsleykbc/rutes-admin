@@ -2,7 +2,7 @@ import React from 'react';
 import Annotations from '../../../components/ViewProjectComponents/Annotations';
 import ViewProjectLayout from '../../../components/ViewProjectLayout';
 
-const index = () => {
+const annotations = () => {
 	return (
 		<ViewProjectLayout>
 			<Annotations />
@@ -10,4 +10,4 @@ const index = () => {
 	);
 };
 
-export default index;
+export default annotations;

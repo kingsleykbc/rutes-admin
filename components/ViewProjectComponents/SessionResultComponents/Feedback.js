@@ -1,14 +1,13 @@
 import { useState } from 'react';
-import { feedback as feedbackResult } from '../../dummybase';
-import Section from '../UI/Section';
-import TabView from '../UI/TabView';
-import FeedbackItem from './FeedbackComponents/FeedbackItem';
+import RouteAnnotations from '../AnnotationsComponents/RouteAnnotations';
+import { annotations as annotationsResult, feedback } from '../../../dummybase';
+import TabView from '../../UI/TabView';
+import FeedbackItem from '../FeedbackComponents/FeedbackItem';
 
 const Feedback = () => {
-	const [resultRouteIndex, setResultRouteIndex] = useState(0);
 	const [view, setView] = useState('All');
 
-	const data = feedbackResult[resultRouteIndex].feedback.filter(item => {
+	const data = feedback[0].feedback.filter(item => {
 		if (view === 'Notes') return item.type === 'note';
 		if (view === 'Error updates') return item.type === 'error';
 		if (view === 'Feature requests') return item.type === 'feature request';
@@ -19,39 +18,23 @@ const Feedback = () => {
 	//  UI
 	// ===================================================================================================================
 	return (
-		<div className='Feedback'>
-			<div className='topSection'>
-				{/* ROUTE SELECTION */}
-				<select name='route' id=''>
-					<option>Route</option>
-					{/* DYNAMICALLY PUT OPTIONS HERE */}
-				</select>
-
-				{/* TABS */}
+		<div className='subSection'>
+			<div className='titleSection'>
+				<h3 className='title'>Feedback</h3>
 				<TabView tabs={['All', 'Notes', 'Feature requests', 'Error updates']} onChange={setView} />
 			</div>
 
-			{/* FEEDBACK ITEMS */}
-			<Section>
+			<div className='content'>
 				{data.map(item => (
 					<FeedbackItem key={item.id} data={item} />
 				))}
-			</Section>
+			</div>
 
 			{/* STYLE */}
 			<style jsx>{`
-				.topSection {
+				.titleSection {
 					display: flex;
-					align-items: center;
 					justify-content: space-between;
-					background: #3b3b3b;
-					padding: 0px 20px;
-					color: #fff;
-				}
-
-				select {
-					color: #fff;
-					font-weight: bold;
 				}
 			`}</style>
 		</div>

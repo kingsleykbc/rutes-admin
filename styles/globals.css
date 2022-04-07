@@ -5,6 +5,7 @@
 	--faintColor: #f5f5f5;
 	--boxShadow: 0 2px 5px rgba(0, 0, 0, 0.13);
 	--highlightColor: #e2e2e2;
+	--lightText: #747474;
 }
 
 * {
@@ -45,4 +46,14 @@ textarea {
 	padding: 15px;
 	border-radius: 5px;
 	background: #fff;
+}
+
+.formField input, .formField select {
+	width: 100%;
+	margin: 15px 0;
+}
+
+
+li {
+	list-style-position: inside;
 }

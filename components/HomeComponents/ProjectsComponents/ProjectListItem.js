@@ -4,8 +4,10 @@ import { HiOutlineBeaker as IcProject } from 'react-icons/hi';
 import { AiOutlineUser as IcUser } from 'react-icons/ai';
 import { GiProgression as IcProgress } from 'react-icons/gi';
 import Link from 'next/link';
+import ListItemStat from '../../UI/ListItemStat';
 
 const ProjectListItem = ({ data }) => {
+
 	return (
 		<Link href={`/view/${data._id}/annotations`}>
 			<a className='ProjectListItem'>
@@ -18,8 +20,8 @@ const ProjectListItem = ({ data }) => {
 					<p>{data.description}</p>
 
 					<div className='stats'>
-						<Stat icon={<IcUser />}>{data.noParticipants} participants</Stat>
-						<Stat icon={<IcProgress />}>50% complete</Stat>
+						<ListItemStat icon={<IcUser />}>{data.noParticipants} participants</ListItemStat>
+						<ListItemStat icon={<IcProgress />}>50% complete</ListItemStat>
 					</div>
 				</div>
 
@@ -68,26 +70,3 @@ const ProjectListItem = ({ data }) => {
 };
 
 export default ProjectListItem;
-
-const Stat = ({ icon, children }) => {
-	return (
-		<div className='Stat'>
-			{icon}
-			{children}
-
-			{/* STYLE */}
-			<style jsx>{`
-				.Stat {
-					display: inline-flex;
-					margin-right: 12px;
-					gap: 10px;
-					font-size: 0.95rem;
-					align-items: center;
-					background: var(--highlightColor);
-					border-radius: 50px;
-					padding: 4px 15px;
-				}
-			`}</style>
-		</div>
-	);
-};

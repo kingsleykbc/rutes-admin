@@ -20,7 +20,7 @@ const SideMenu = () => {
 				<MenuItem icon={<IcQuestion />} label='Questionnaire Responses' path='/responses' />
 			</div>
 
-			<Button href={`/view/${query.projectID}/individual`}>Individual Session</Button>
+			<Button linkHref={`/view/${query.projectID}/individualsessions`}>Individual Session</Button>
 
 			{/* STYLE */}
 			<style jsx>{`

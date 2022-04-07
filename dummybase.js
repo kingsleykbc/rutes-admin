@@ -22,12 +22,19 @@ export const projects = [
 			}
 		],
 		preQuestionnaire: [
-			{ type: 'text', question: 'What is the biggest challenge you face with existing systems?' },
-			{ type: 'multi-choice', question: 'How often do you use similar systems?', options: ['very often', 'rarely', 'not at all'] }
+			{ id: '34252323', type: 'text', question: 'What is the biggest challenge you face with existing systems?' },
+			{
+				id: 'IG35G873',
+				type: 'multi-choice',
+				question: 'How often do you use similar systems?',
+				options: ['very often', 'rarely', 'not at all']
+			},
+			{ id: '3459K323', type: 'text', question: 'What is the biggest challenge you face with existing systems?' }
 		],
 		postQuestionnaire: [
-			{ type: 'text', question: 'What else would you like to see in the system?' },
+			{ id: '403jnund', type: 'text', question: 'What else would you like to see in the system?' },
 			{
+				id: '43undius9',
 				type: 'multi-choice',
 				question: 'How good was the interaction with UI elements?',
 				options: ['Very good', 'good', 'Poor', 'Very poor']
@@ -169,13 +176,66 @@ export const feedback = [
 	}
 ];
 
-export const preQuestionnaireResponse = [];
-
-export const postQuestionnaireResponse = [];
+export const preQuestionnaireResponse = [
+	{
+		question: projects[0].preQuestionnaire[0].question,
+		questionType: 'text',
+		answers: [
+			{ testerName: 'James Fred', answer: 'This is my first answer', timeAnswered: new Date() },
+			{ testerName: 'Julia Garner', answer: 'The second answer', timeAnswered: new Date() },
+			{ testerName: 'Philip logan', answer: 'This is an answer to the first answer', timeAnswered: new Date() }
+		]
+	},
+	{
+		question: projects[0].preQuestionnaire[1].question,
+		questionType: 'multi-choice',
+		answers: [
+			{ option: projects[0].preQuestionnaire[1].options[0], percentage: 33 },
+			{ option: projects[0].preQuestionnaire[1].options[1], percentage: 43 },
+			{ option: projects[0].preQuestionnaire[1].options[2], percentage: 23 }
+		]
+	},
+	{
+		question: projects[0].preQuestionnaire[2].question,
+		questionType: 'text',
+		answers: [
+			{ testerName: 'James Fred', answer: 'This is my first answer', timeAnswered: new Date() },
+			{ testerName: 'Julia Garner', answer: 'The second answer', timeAnswered: new Date() },
+			{ testerName: 'Philip logan', answer: 'This is an answer to the first answer', timeAnswered: new Date() }
+		]
+	}
+];
 
 export const response = {
 	annotations,
 	feedback,
 	preQuestionnaire: preQuestionnaireResponse,
-	postQuestionnaire: postQuestionnaireResponse
+	postQuestionnaire: preQuestionnaireResponse
 };
+
+export const sessions = [
+	{
+		sessionID: 'e8hdsio32',
+		testerEmail: 'jamesjohn@gmail.com',
+		progress: 24,
+		timeStarted: new Date()
+	},
+	{
+		sessionID: 'e8hdsio32',
+		testerEmail: 'jamesjohn@gmail.com',
+		progress: 24,
+		timeStarted: new Date()
+	},
+	{
+		sessionID: 'e8hdsio32',
+		testerEmail: 'jamesjohn@gmail.com',
+		progress: 24,
+		timeStarted: new Date()
+	},
+	{
+		sessionID: 'e8hdsio32',
+		testerEmail: 'jamesjohn@gmail.com',
+		progress: 24,
+		timeStarted: new Date()
+	}
+];

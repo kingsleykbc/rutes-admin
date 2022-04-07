@@ -1,15 +1,16 @@
 import React from 'react';
+import classnames from 'classnames';
 import WithLink from './withLink';
 
-const Button = ({ type = 'button', bold = false, children, onClick, loading, linkHref }) => {
+const Button = ({ type = 'button', bold = false, children, onClick, loading, filled = false, linkHref }) => {
 	return (
-		<WithLink link={linkHref}>
+		<WithLink className='linkButton' link={linkHref}>
 			{type === 'text' ? (
 				<span className='button' onClick={onClick}>
 					{children}
 				</span>
 			) : (
-				<button className='button' onClick={onClick}>
+				<button className={classnames(['button', { filled }])} onClick={onClick}>
 					{children}
 				</button>
 			)}
@@ -33,6 +34,15 @@ const Button = ({ type = 'button', bold = false, children, onClick, loading, lin
 
 				button:hover {
 					transform: scale(1.1);
+				}
+
+				:global(.linkButton) button {
+					width: 100%;
+				}
+
+				.filled {
+					background: var(--primaryColor);
+					color: #fff;
 				}
 			`}</style>
 		</WithLink>
