@@ -1,19 +1,14 @@
 import { useState } from 'react';
-import { feedback as feedbackResult } from '../../dummybase';
+import { sessionFeedbacksFormatter } from '../../graphql/formatters/projects';
+import EmptySet from '../UI/EmptySet';
 import Section from '../UI/Section';
 import TabView from '../UI/TabView';
 import FeedbackItem from './FeedbackComponents/FeedbackItem';
 
-const Feedback = () => {
-	const [resultRouteIndex, setResultRouteIndex] = useState(0);
+const Feedback = ({ data: { sessions } }) => {
 	const [view, setView] = useState('All');
 
-	const data = feedbackResult[resultRouteIndex].feedback.filter(item => {
-		if (view === 'Notes') return item.type === 'note';
-		if (view === 'Error updates') return item.type === 'error';
-		if (view === 'Feature requests') return item.type === 'feature request';
-		return true;
-	});
+	const data = sessionFeedbacksFormatter(sessions, view);
 
 	// ===================================================================================================================
 	//  UI
@@ -21,18 +16,13 @@ const Feedback = () => {
 	return (
 		<div className='Feedback'>
 			<div className='topSection'>
-				{/* ROUTE SELECTION */}
-				<select name='route' id=''>
-					<option>Route</option>
-					{/* DYNAMICALLY PUT OPTIONS HERE */}
-				</select>
-
 				{/* TABS */}
 				<TabView tabs={['All', 'Notes', 'Feature requests', 'Error updates']} onChange={setView} />
 			</div>
 
 			{/* FEEDBACK ITEMS */}
 			<Section>
+				{data.length === 0 && <EmptySet>No &quot;{view}&quot; feedback yet</EmptySet>}
 				{data.map(item => (
 					<FeedbackItem key={item.id} data={item} />
 				))}
@@ -41,11 +31,7 @@ const Feedback = () => {
 			{/* STYLE */}
 			<style jsx>{`
 				.topSection {
-					display: flex;
-					align-items: center;
-					justify-content: space-between;
 					background: #3b3b3b;
-					padding: 0px 20px;
 					color: #fff;
 				}
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Spinner = ({ scale = 1, color = 'var(--primaryColor)' }) => {
+const Spinner = ({ margin = '0', scale = 1, color = 'var(--primaryColor)' }) => {
 	return (
 		<div className='SpinnerContainer'>
 			<div className='Spinner'></div> {/* STYLE */}
@@ -8,6 +8,7 @@ const Spinner = ({ scale = 1, color = 'var(--primaryColor)' }) => {
 				.SpinnerContainer {
 					display: inline-block;
 					transform: scale(${scale});
+					margin: ${margin};
 				}
 				.Spinner {
 					position: relative;

@@ -50,11 +50,19 @@ textarea {
 	background: #fff;
 }
 
-.formField input, .formField select {
+.formField input,
+.formField select,
+.formField textarea {
 	width: 100%;
 	margin: 15px 0;
 }
-
+.formField textarea {
+	height: 100px;
+	resize: none;
+}
+.lightText {
+	color: var(--lightText);
+}
 
 li {
 	list-style-position: inside;

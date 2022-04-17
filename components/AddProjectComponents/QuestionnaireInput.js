@@ -19,7 +19,7 @@ const QuestionnaireInput = ({ type = 'Pre', onChange, data, onDelete }) => {
 					No questions added
 				</EmptySet>
 				{data.map((item, index) => (
-					<QuestionItem key={item.route} data={item} onDelete={() => onDelete(index)} />
+					<QuestionItem key={item.question + index + 'qil'} data={item} onDelete={() => onDelete(index)} />
 				))}
 			</Container>
 

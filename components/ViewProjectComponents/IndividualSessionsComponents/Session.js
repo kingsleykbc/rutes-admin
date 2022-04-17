@@ -10,13 +10,13 @@ import Link from 'next/link';
 const Session = ({ data }) => {
 	const { query } = useRouter();
 	return (
-		<Link href={`/view/${query.projectID}/individualsessions/${data.sessionID}`}>
+		<Link href={`/view/${query.projectKey}/individualsessions/${data.id}`}>
 			<a className='Session whiteboard'>
 				<div className='icon'>
 					<IcSession />
 				</div>
 				<div className='details'>
-					<h4>Session #{data.sessionID}</h4>
+					<h4>Session {data.id}</h4>
 					<div className='stats'>
 						<ListItemStat icon={<IcUser />}>{data.testerEmail}</ListItemStat>
 						<ListItemStat icon={<IcProgress />}>{data.progress}%</ListItemStat>

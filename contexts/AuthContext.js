@@ -23,7 +23,6 @@ export const AuthContextProvider = ({ children }) => {
 	 * ON COMPONENT LOAD, GET USER DATA
 	 */
 	useEffect(() => {
-		console.log('Ran here', { user });
 		getUser();
 	}, []);
 

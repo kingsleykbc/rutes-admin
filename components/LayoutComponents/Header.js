@@ -5,9 +5,11 @@ import { GoChevronDown as IcArrowDown } from 'react-icons/go';
 import { BsSearch as IcSearch } from 'react-icons/bs';
 import { useAuth } from '../../contexts/AuthContext';
 import Button from '../UI/Button';
+import { useSearch } from '../../contexts/SearchContext';
 
 const Header = () => {
 	const { user, logout } = useAuth();
+	const { keyword, setKeyword } = useSearch();
 
 	// ===================================================================================================================
 	//  UI
@@ -19,7 +21,7 @@ const Header = () => {
 			{/* SEARCH BAR */}
 			<div className='searchBar'>
 				<IcSearch />
-				<input type='search' name='' placeholder='Search Projects' />
+				<input value={keyword}  type='search' onChange={({ target: { value } }) => setKeyword(value)} placeholder='Search Projects' />
 			</div>
 
 			{/* ACCOUNT SECTION */}

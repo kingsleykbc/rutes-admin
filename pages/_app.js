@@ -6,6 +6,7 @@ import Head from 'next/head';
 import AuthContext, { AuthContextProvider } from '../contexts/AuthContext';
 import { ApolloProvider } from '@apollo/client';
 import apolloClient from '../lib/apollo';
+import SearchContextProvider from '../contexts/SearchContext';
 
 /**
  * SETUP N-PROGRESS LOADER
@@ -19,8 +20,8 @@ Router.events.on('routeChangeError', () => NProgress.done());
  */
 function MyApp({ Component, pageProps, router }) {
 	return (
-		<>
-			<ApolloProvider client={apolloClient}>
+		<ApolloProvider client={apolloClient}>
+			<SearchContextProvider>
 				<AuthContextProvider>
 					<AuthContext.Consumer>
 						{/* DON'T SHOW LAYOUT FOR THE AUTHENTICATION PAGES */}
@@ -54,8 +55,8 @@ function MyApp({ Component, pageProps, router }) {
 						)}
 					</AuthContext.Consumer>
 				</AuthContextProvider>
-			</ApolloProvider>
-		</>
+			</SearchContextProvider>
+		</ApolloProvider>
 	);
 }
 

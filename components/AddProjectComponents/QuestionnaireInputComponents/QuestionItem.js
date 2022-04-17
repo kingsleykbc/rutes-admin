@@ -10,7 +10,7 @@ const QuestionItem = ({ data, onDelete }) => {
 			<div className='topSection'>
 				<div className='icon'>{data.questionType === 'text' ? <IcTextQuestion /> : <IcMultiChoiceQuestion />}</div>
 				<p>{data.question}</p>
-				<ClickableIcon hasShadow icon={<IcDelete color='var(--primaryColor)' />} onClick={onDelete} />
+				{onDelete && <ClickableIcon hasShadow icon={<IcDelete color='var(--primaryColor)' />} onClick={onDelete} />}
 			</div>
 
 			{data.questionType === 'multi-choice' && (

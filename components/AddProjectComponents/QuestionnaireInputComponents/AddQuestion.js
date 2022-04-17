@@ -4,7 +4,7 @@ import Container from '../../UI/Container';
 import MultiTextInput from '../../UI/MultiTextInput';
 
 const AddQuestion = ({ toggle, onAdd }) => {
-	const [questionType, setQuestionType] = useState('text');
+	const [type, setType] = useState('text');
 	const [question, setQuestion] = useState('');
 	const [options, setOptions] = useState([]);
 
@@ -12,7 +12,7 @@ const AddQuestion = ({ toggle, onAdd }) => {
 	 * HANDLE ADD QUESTION
 	 */
 	const handleAddQuestion = () => {
-		const data = { questionType, question, options };
+		const data = { type, question, options };
 		const errorMessage = validate(data);
 
 		if (errorMessage) {
@@ -20,7 +20,7 @@ const AddQuestion = ({ toggle, onAdd }) => {
 			return;
 		}
 
-		if (data.questionType === 'text') delete data.options;
+		if (data.type === 'text') delete data.options;
 
 		onAdd(data);
 		reset();
@@ -32,7 +32,7 @@ const AddQuestion = ({ toggle, onAdd }) => {
 	 */
 	const validate = data => {
 		if (!data.question) return 'Please enter a valid question.';
-		if (data.questionType === 'multi-choice' && data.options.length === 0)
+		if (data.type === 'multi-choice' && data.options.length === 0)
 			return 'Please enter at lease one option for the multiple choice question';
 	};
 
@@ -52,7 +52,7 @@ const AddQuestion = ({ toggle, onAdd }) => {
 			{/* TYPE */}
 			<div className='formField'>
 				<h4>Question Type</h4>
-				<select value={questionType} onChange={e => setQuestionType(e.target.value)}>
+				<select value={type} onChange={e => setType(e.target.value)}>
 					<option value='text'>Text</option>
 					<option value='multi-choice'>Multiple choice</option>
 				</select>
@@ -65,10 +65,10 @@ const AddQuestion = ({ toggle, onAdd }) => {
 			</div>
 
 			{/* OPTIONS (FOR MULTIPLE CHOICE) */}
-			{questionType === 'multi-choice' && (
+			{type === 'multi-choice' && (
 				<div>
 					<h4>Options</h4>
-					<MultiTextInput value={options} onChange={setOptions} />
+					<MultiTextInput value={options} onChange={setOptions} itemPrefix='Option' />
 				</div>
 			)}
 

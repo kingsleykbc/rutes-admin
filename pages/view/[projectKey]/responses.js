@@ -3,11 +3,7 @@ import QuestionnaireResponses from '../../../components/ViewProjectComponents/Qu
 import ViewProjectLayout from '../../../components/ViewProjectLayout';
 
 const Responses = () => {
-	return (
-		<ViewProjectLayout>
-			<QuestionnaireResponses />
-		</ViewProjectLayout>
-	);
+	return <ViewProjectLayout>{data => <QuestionnaireResponses data={data} />}</ViewProjectLayout>;
 };
 
 export default Responses;

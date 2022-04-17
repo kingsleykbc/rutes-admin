@@ -3,10 +3,10 @@ import { sessions } from '../../dummybase';
 import Section from '../UI/Section';
 import Session from './IndividualSessionsComponents/Session';
 
-const IndividualSessions = () => {
+const IndividualSessions = ({ data }) => {
 	return (
 		<Section>
-			{sessions.map(item => (
+			{data.sessions.map(item => (
 				<Session key={item.sessionID} data={item} />
 			))}
 		</Section>

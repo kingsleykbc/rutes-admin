@@ -1,26 +1,30 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react';
 import Button from '../UI/Button';
 import { HiOutlineAnnotation as IcAnnotation } from 'react-icons/hi';
 import { VscFeedback as IcFeedback } from 'react-icons/vsc';
 import { IoIosChatboxes as IcChat } from 'react-icons/io';
+import { HiOutlineBeaker as IcProject } from 'react-icons/hi';
+
 import { AiOutlineQuestionCircle as IcQuestion } from 'react-icons/ai';
 import ActiveLink from '../UI/ActiveLink';
 
-const SideMenu = () => {
-	const { query } = useRouter();
+const SideMenu = ({ query, data }) => {
+	const hasQuestionnaires = data.preQuestionnaire?.length > 0 || data.postQuestionnaire?.length > 0;
 
+	// ===================================================================================================================
+	//  UI
+	// ===================================================================================================================
 	return (
 		<div className='SideMenu'>
 			<div className='menu'>
-				<MenuItem icon={<IcAnnotation />} label='Annotations' path='/annotations' />
-				<MenuItem icon={<IcFeedback />} label='Feedback' path='/feedback' />
-				<MenuItem icon={<IcChat />} label='Chat' path='/chat' />
-				<MenuItem icon={<IcQuestion />} label='Questionnaire Responses' path='/responses' />
+				<MenuItem query={query} icon={<IcProject />} label='Details' path='/details' />
+				<MenuItem query={query} icon={<IcAnnotation />} label='Annotations' path='/annotations' />
+				<MenuItem query={query} icon={<IcFeedback />} label='Feedback' path='/feedback' />
+				<MenuItem query={query} icon={<IcChat />} label='Chat' path='/chat' />
+				{hasQuestionnaires && <MenuItem query={query} icon={<IcQuestion />} label='Questionnaire Responses' path='/responses' />}
 			</div>
 
-			<Button linkHref={`/view/${query.projectID}/individualsessions`}>Individual Session</Button>
+			<Button linkHref={`/view/${query.projectKey}/individualsessions`}>Individual Session</Button>
 
 			{/* STYLE */}
 			<style jsx>{`
@@ -42,11 +46,9 @@ const SideMenu = () => {
 
 export default SideMenu;
 
-const MenuItem = ({ icon, label, path }) => {
-	const { query } = useRouter();
-
+const MenuItem = ({ icon, label, path, query }) => {
 	return (
-		<ActiveLink className='MenuItem' href={`/view/${query.projectID}${path}`}>
+		<ActiveLink className='MenuItem' href={`/view/${query.projectKey}${path}`}>
 			<div className='icon'>{icon}</div>
 			<span>{label}</span>
 
@@ -55,12 +57,8 @@ const MenuItem = ({ icon, label, path }) => {
 				:global(.MenuItem) {
 					display: flex;
 					align-items: center;
-					padding: 15px;
+					padding: 12px 15px;
 					gap: 17px;
-				}
-
-				:global(.MenuItem):first-child {
-					border-top: 0;
 				}
 
 				:global(.MenuItem):hover {

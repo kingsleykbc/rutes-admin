@@ -3,11 +3,7 @@ import IndividualSessions from '../../../components/ViewProjectComponents/Indivi
 import ViewProjectLayout from '../../../components/ViewProjectLayout';
 
 const individualsessions = () => {
-	return (
-		<ViewProjectLayout>
-			<IndividualSessions />
-		</ViewProjectLayout>
-	);
+	return <ViewProjectLayout>{data => <IndividualSessions data={data} />}</ViewProjectLayout>;
 };
 
 export default individualsessions;

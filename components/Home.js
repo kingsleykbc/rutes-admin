@@ -5,7 +5,7 @@ import Projects from './HomeComponents/Projects';
 const Home = () => {
 	return (
 		<div className='Home'>
-			<Notifications />
+			{/* <Notifications /> */}
 			<Projects />
 
 			{/* STYLE */}

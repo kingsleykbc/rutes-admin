@@ -2,26 +2,25 @@ import React from 'react';
 import { GoChevronRight as IcGo } from 'react-icons/go';
 import { HiOutlineBeaker as IcProject } from 'react-icons/hi';
 import { AiOutlineUser as IcUser } from 'react-icons/ai';
-import { GiProgression as IcProgress } from 'react-icons/gi';
+import { BiGlobe as IcURL } from 'react-icons/bi';
 import Link from 'next/link';
 import ListItemStat from '../../UI/ListItemStat';
 
 const ProjectListItem = ({ data }) => {
-
 	return (
-		<Link href={`/view/${data._id}/annotations`}>
+		<Link href={`/view/${data.projectKey}/details`}>
 			<a className='ProjectListItem'>
 				<div className='icon leading'>
 					<IcProject />
 				</div>
 
 				<div className='details'>
-					<h3>{data.title}</h3>
+					<h3>{data.title} </h3>
 					<p>{data.description}</p>
 
 					<div className='stats'>
 						<ListItemStat icon={<IcUser />}>{data.noParticipants} participants</ListItemStat>
-						<ListItemStat icon={<IcProgress />}>50% complete</ListItemStat>
+						<ListItemStat icon={<IcURL />}>{data.url}</ListItemStat>
 					</div>
 				</div>
 
@@ -40,6 +39,11 @@ const ProjectListItem = ({ data }) => {
 						gap: 20px;
 						align-items: center;
 						cursor: pointer;
+						transition: transform linear 0.1s;
+					}
+
+					.ProjectListItem:hover {
+						transform: scale(1.03);
 					}
 
 					.details {

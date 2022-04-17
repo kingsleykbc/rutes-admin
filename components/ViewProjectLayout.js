@@ -3,10 +3,19 @@ import classnames from 'classnames';
 import useWindowSize from '../hooks/useWindowSize';
 import { GiHamburgerMenu as IcToggle } from 'react-icons/gi';
 import SideMenu from './ViewProjectLayoutComponents/SideMenu';
+import { useQuery } from '@apollo/client';
+import { getProjectQuery } from '../graphql/queries/projects';
+import { useRouter } from 'next/router';
+import LoadablePage from './UI/LoadablePage';
 
 const ViewProjectLayout = ({ children }) => {
+	const { query } = useRouter();
+
+	const { data, error, loading } = useQuery(getProjectQuery, { variables: { projectKey: query.projectKey } });
 	const [toggleSidebar, setToggleSidebar] = useState(false);
 	const { height } = useWindowSize();
+
+	if (error || loading) return <LoadablePage states={{ error, loading }} />;
 
 	return (
 		<div className={classnames(['ViewProjectLayout', { sidebarOff: toggleSidebar }])}>
@@ -17,11 +26,11 @@ const ViewProjectLayout = ({ children }) => {
 
 			{/* SIDEBAR */}
 			<aside>
-				<SideMenu />
+				<SideMenu query={query} data={data.project} />
 			</aside>
 
 			{/* CONTENT */}
-			<div className='content'>{children}</div>
+			<div className='content'>{children(data.project)}</div>
 
 			{/* STYLE */}
 			<style jsx>{`
@@ -43,7 +52,6 @@ const ViewProjectLayout = ({ children }) => {
 					left: 300px;
 					width: calc(100% - 300px);
 					padding-bottom: 50px;
-					background: var(--faintColor);
 					min-height: calc(${height + ' - '} 56px);
 				}
 

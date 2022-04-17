@@ -7,7 +7,7 @@ const TestItem = ({ data, onDelete }) => {
 		<div className='TestItem whiteboard'>
 			<div className='topSection'>
 				<h4>{data.route}</h4>
-				<ClickableIcon icon={<IcDelete color='var(--primaryColor)' />} onClick={onDelete} />
+				{onDelete && <ClickableIcon icon={<IcDelete color='var(--primaryColor)' />} onClick={onDelete} />}
 			</div>
 			<ul className='instructions'>
 				{data.instructions.map((item, index) => (

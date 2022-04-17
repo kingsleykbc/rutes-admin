@@ -1,9 +1,10 @@
 import React from 'react';
 import { RiQuestionnaireLine as IcTextQuestion } from 'react-icons/ri';
 import { FaList as IcMultiChoiceQuestion } from 'react-icons/fa';
+import EmptySet from '../../UI/EmptySet';
 
 const QuestionnaireResponse = ({ data }) => {
-	const { questionType } = data;
+	const { type, answers } = data;
 
 	// ===================================================================================================================
 	//  UI
@@ -12,19 +13,18 @@ const QuestionnaireResponse = ({ data }) => {
 		<div className='QuestionnaireResponse'>
 			{/* QUESTION SECTION */}
 			<div className='question'>
-				<div className='icon'>{questionType === 'text' ? <IcTextQuestion /> : <IcMultiChoiceQuestion />}</div>
+				<div className='icon'>{type === 'text' ? <IcTextQuestion /> : <IcMultiChoiceQuestion />}</div>
 				<h4>{data.question}</h4>
 			</div>
 
 			{/* ANSWER SECTION */}
 			<div className='answer'>
-				{data.answers.map((item, index) =>
-					questionType === 'text' ? (
-						<TextResponse key={`textanswer_${index}`} data={item} />
-					) : (
-						<MultiChoiceResponse key={`mcanswer_${index}`} data={item} />
-					)
-				)}
+				{answers.length === 0 && <EmptySet showIcon={false}>No responses yet</EmptySet>}
+				{type === 'text'
+					? answers.map((item, index) => <TextResponse key={`textanswer_${index}`} data={item} />)
+					: Object.keys(answers).map((option, index) => (
+							<MultiChoiceResponse key={`optanswer_${index}`} data={{ option, percentage: answers[option] }} />
+					  ))}
 			</div>
 
 			{/* STYLE */}
@@ -56,12 +56,12 @@ const QuestionnaireResponse = ({ data }) => {
 
 export default QuestionnaireResponse;
 
-const TextResponse = ({ data: { testerName, answer, timeAnswered } }) => {
+const TextResponse = ({ data: { testerEmail, answer, createdAt } }) => {
 	return (
 		<div className='TextResponse'>
 			<p>{answer}</p>
 			<div className='details'>
-				<span>{testerName}</span> - <span>{new Date(timeAnswered).toLocaleString()}</span>
+				<span>{testerEmail}</span> - <span>{new Date(createdAt).toLocaleString()}</span>
 			</div>
 
 			{/* STYLE */}
@@ -105,8 +105,12 @@ const MultiChoiceResponse = ({ data: { option, percentage } }) => {
 					align-items: center;
 					gap: 20px;
 				}
+				.percentage p {
+					width: 51px;
+					text-align: right;
+				}
 				.option {
-					max-width: 100px;
+					font-size: 0.95rem;
 				}
 				.bar {
 					height: 5px;
@@ -116,10 +120,11 @@ const MultiChoiceResponse = ({ data: { option, percentage } }) => {
 					position: relative;
 				}
 				.bar::before {
-					content:"";
+					content: '';
 					height: 5px;
 					position: absolute;
 					top: 0;
+					border-radius: 10px;
 					left: 0;
 					width: ${percentage}%;
 					background: var(--primaryColor);

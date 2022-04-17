@@ -3,7 +3,7 @@ import EmptySet from './EmptySet';
 import { MdDelete as IcDelete } from 'react-icons/md';
 import Button from './Button';
 
-const MultiTextInput = ({ onChange, value }) => {
+const MultiTextInput = ({ onChange, value, type = 'text', placeholder = 'Nothing Added', itemPrefix = 'Item' }) => {
 	const [options, setOptions] = useState([]);
 
 	useEffect(() => {
@@ -44,14 +44,14 @@ const MultiTextInput = ({ onChange, value }) => {
 					addedOptions
 				) : (
 					<EmptySet showIcon={false} margin='0'>
-						Nothing added
+						{placeholder}
 					</EmptySet>
 				)}
 			</div>
 
 			{/* ADD BUTTON */}
 			<form onSubmit={onAdd}>
-				<input type='text' placeholder={`Option ${options.length + 1}`} />
+				<input className='MultiTextInputForm' required type={type} placeholder={`${itemPrefix} ${options.length + 1}`} />
 				<Button>Add</Button>
 			</form>
 
@@ -60,10 +60,12 @@ const MultiTextInput = ({ onChange, value }) => {
 				form {
 					display: flex;
 					gap: 12px;
+					align-items: center;
 				}
 
 				input {
 					flex-grow: 1;
+					margin: 0;
 				}
 
 				.addedOption {
