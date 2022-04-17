@@ -17,7 +17,7 @@ const LoginLayout = ({ children }) => {
 						<a className={classnames({ active: asPath === '/login' })}>Login</a>
 					</Link>
 					<Link href='/signup'>
-						<a className={classnames({ active: asPath === '/signup' })}>SignUp</a>
+						<a className={classnames({ active: asPath === '/signup' })}>Sign up</a>
 					</Link>
 				</nav>
 				<div className='content'>{children}</div>

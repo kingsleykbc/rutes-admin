@@ -4,6 +4,7 @@ import { RiErrorWarningLine as IcInfo } from 'react-icons/ri';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Button from './Button';
 import Link from 'next/link';
+import classnames from 'classnames';
 
 // =======================================================================
 //  TEXT
@@ -153,7 +154,7 @@ export const IconText = ({
 			</div>
 			{iconBack && <div className='iconBack'>{iconBack}</div>}
 
-			{/* STYLE ======================================================================================= */}
+			{/* STYLE */}
 			<style jsx>{`
 				.IconText {
 					display: ${display};
@@ -178,11 +179,11 @@ export const IconText = ({
 				}
 
 				.icon :global(svg *) {
-					color:  ${iconColor || 'var(--primaryColor)'} !important;
+					color: ${iconColor || 'var(--primaryColor)'} !important;
 				}
 
 				.iconBack :global(svg *) {
-					color:  ${iconBackColor || 'var(--primaryColor)'} !important;
+					color: ${iconBackColor || 'var(--primaryColor)'} !important;
 				}
 
 				.container {
@@ -228,10 +229,9 @@ export const HighlightedText = ({
 	width,
 	display,
 	fillWidth,
+	type,
 	padding,
-	color,
 	margin,
-	highlightColor,
 	hideOverflow,
 	...textProps
 }) => {
@@ -259,19 +259,12 @@ export const HighlightedText = ({
     text-overflow: ellipsis;
   `;
 
-	/**
-	 * HIGHLIGHT AND TEXT COLOR
-	 */
-	highlightColor = highlightColor || 'var(--highlightColor)';
-	let newColor;
-	color = color || newColor;
-
 	// =======================================================================
 	//  UI
 	// =======================================================================
 	return (
-		<div className='HighlightedText'>
-			<Text wrap={false} isBold {...textProps} color={color}>
+		<div className={classnames(['HighlightedText', { isDanger: type === 'danger' }])}>
+			<Text wrap={false} isBold {...textProps}>
 				{children}
 			</Text>
 
@@ -284,8 +277,14 @@ export const HighlightedText = ({
 					width: ${width};
 					text-align: center;
 					border-radius: 5px;
-					background: ${highlightColor};
-					${wrapStyle}
+					background: var(--highlightColor);
+					color: var(--lightText);
+					${wrapStyle};
+				}
+
+				.isDanger {
+					color: var(--dangerColor);
+					background: var(--dangerHighlightColor);
 				}
 
 				@media screen and (max-width: ${responsiveWidth}) {

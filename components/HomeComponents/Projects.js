@@ -9,7 +9,7 @@ const Projects = () => {
 
 	return (
 		<div className='Projects'>
-			<Section title='Projects' sideContent={<Button linkHref='/addproject'>Add Project</Button>}>
+			<Section title='Projects' padding='0 20px 20px 20px' sideContent={<Button linkHref='/addproject'>Add Project</Button>}>
 				{/* PROJECTS LIST */}
 				{projectWidgets}
 			</Section>

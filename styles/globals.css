@@ -1,5 +1,7 @@
 :root {
 	--primaryColor: #eb3f5b;
+	--dangerColor: #eb3f5b;
+	--dangerHighlightColor: #fdc2cb;
 	--borderColor: #dadada;
 	--border: 1px solid var(--borderColor);
 	--faintColor: #f5f5f5;

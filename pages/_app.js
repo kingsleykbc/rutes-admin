@@ -3,6 +3,9 @@ import '../styles/globals.css';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import Head from 'next/head';
+import AuthContext, { AuthContextProvider } from '../contexts/AuthContext';
+import { ApolloProvider } from '@apollo/client';
+import apolloClient from '../lib/apollo';
 
 /**
  * SETUP N-PROGRESS LOADER
@@ -17,30 +20,41 @@ Router.events.on('routeChangeError', () => NProgress.done());
 function MyApp({ Component, pageProps, router }) {
 	return (
 		<>
-			<Head>
-				<title>RUTES ADMIN</title>
-			</Head>
+			<ApolloProvider client={apolloClient}>
+				<AuthContextProvider>
+					<AuthContext.Consumer>
+						{/* DON'T SHOW LAYOUT FOR THE AUTHENTICATION PAGES */}
+						{({ user }) => (
+							<>
+								<Head>
+									<title>RUTES ADMIN</title>
+								</Head>
+								{['/signup', '/login', '/admin-login'].includes(router.route) ? (
+									<Component route={router.route} {...pageProps} />
+								) : (
+									user && (
+										<Layout user={user} route={router.route}>
+											<Component route={router.route} {...pageProps} />
+										</Layout>
+									)
+								)}
 
-			{/* DON'T SHOW LAYOUT FOR THE AUTHENTICATION PAGES */}
-			{['/signup', '/login', '/admin-login'].includes(router.route) ? (
-				<Component route={router.route} {...pageProps} />
-			) : (
-				<Layout route={router.route}>
-					<Component route={router.route} {...pageProps} />
-				</Layout>
-			)}
+								{/* STYLE */}
+								<style jsx global>{`
+									#nprogress .bar {
+										background: var(--primaryColor) !important;
+										border-color: var(--primaryColor) !important;
+									}
 
-			{/* STYLE */}
-			<style jsx global>{`
-				#nprogress .bar {
-					background: var(--primaryColor) !important;
-					border-color: var(--primaryColor) !important;
-				}
-
-				#nprogress .spinner {
-					display: none;
-				}
-			`}</style>
+									#nprogress .spinner {
+										display: none;
+									}
+								`}</style>
+							</>
+						)}
+					</AuthContext.Consumer>
+				</AuthContextProvider>
+			</ApolloProvider>
 		</>
 	);
 }

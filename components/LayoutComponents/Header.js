@@ -3,9 +3,15 @@ import Logo from '../UI/Logo';
 import { AiOutlineUser as IcUser } from 'react-icons/ai';
 import { GoChevronDown as IcArrowDown } from 'react-icons/go';
 import { BsSearch as IcSearch } from 'react-icons/bs';
-import { user } from '../../dummybase';
+import { useAuth } from '../../contexts/AuthContext';
+import Button from '../UI/Button';
 
 const Header = () => {
+	const { user, logout } = useAuth();
+
+	// ===================================================================================================================
+	//  UI
+	// ===================================================================================================================
 	return (
 		<div className='Header'>
 			<Logo responsiveShowText={false} />
@@ -17,11 +23,7 @@ const Header = () => {
 			</div>
 
 			{/* ACCOUNT SECTION */}
-			<div className='account'>
-				<IcUser />
-				<h4>{user.fullName}</h4>
-				<IcArrowDown />
-			</div>
+			<Account user={user} logout={logout} />
 
 			{/* STYLE */}
 			<style jsx>{`
@@ -63,11 +65,34 @@ const Header = () => {
 					background: none;
 					padding: 8px 12px;
 				}
+			`}</style>
+		</div>
+	);
+};
 
+export default Header;
+
+const Account = ({ user, logout }) => {
+	return (
+		<div className='account'>
+			<IcUser />
+			<h4>{user.fullName}</h4>
+			<IcArrowDown />
+
+			<div className='fullAccount'>
+				<div className='box'>
+					<p>{user.email}</p>
+					<Button onClick={logout}>Logout</Button>
+				</div>
+			</div>
+
+			{/* STYLE */}
+			<style jsx>{`
 				.account {
 					display: flex;
 					align-items: center;
 					cursor: pointer;
+					position: relative;
 				}
 
 				.account h4 {
@@ -78,9 +103,30 @@ const Header = () => {
 					font-size: 1.5rem;
 					opacity: 0.5;
 				}
+				.fullAccount {
+					position: absolute;
+					top: 100%;
+					right: 0;
+					display: none;
+				}
+
+				.account:hover .fullAccount {
+					display: block;
+				}
+
+				.fullAccount .box {
+					background: #fff;
+					box-shadow: var(--boxShadow);
+					padding: 15px;
+					margin-top: 20px;
+					border-radius: 5px;
+				}
+
+				.fullAccount :global(button) {
+					width: 100%;
+					margin-top: 20px;
+				}
 			`}</style>
 		</div>
 	);
 };
-
-export default Header;
