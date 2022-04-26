@@ -1,6 +1,5 @@
 import React from 'react';
-import { AiOutlineWarning as IcWarning } from 'react-icons/ai';
-import { RiErrorWarningLine as IcInfo } from 'react-icons/ri';
+import { RiFileCopyLine as IcCopy } from 'react-icons/ri';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Button from './Button';
 import Link from 'next/link';
@@ -195,28 +194,6 @@ export const IconText = ({
 	);
 };
 
-/**
- * INFO TEXT
- */
-export const InfoText = ({ children, icon, isWarning, isMultiline, ...textProps }) => {
-	icon = isWarning ? <IcWarning /> : <IcInfo />;
-
-	// =======================================================================
-	//  UI
-	// =======================================================================
-	return (
-		<IconText
-			icon={icon}
-			align={isMultiline ? 'flex-start' : 'center'}
-			color={'var(--lightTextColor)'}
-			iconColor={isWarning ? 'var(--warningColor)' : 'var(--lightTextColor)'}
-			{...textProps}
-		>
-			{children}
-		</IconText>
-	);
-};
-
 // =======================================================================
 //  HIGHLIAGHTED TEXT
 // =======================================================================
@@ -277,7 +254,7 @@ export const HighlightedText = ({
 					width: ${width};
 					text-align: center;
 					border-radius: 5px;
-					background: var(--highlightColor);
+					background: #ececec;
 					color: var(--lightText);
 					${wrapStyle};
 				}
@@ -299,56 +276,6 @@ export const HighlightedText = ({
 	);
 };
 
-// =======================================================================
-//  KEY VALUE TEXT
-// =======================================================================
-export const KeyValText = ({
-	item,
-	value,
-	display,
-	itemColor,
-	itemFontSize,
-	itemValueSize,
-	itemFontWeight,
-	itemValPadding,
-	margin,
-	...textComponents
-}) => {
-	display = display || 'inline-block';
-	itemColor = itemColor || 'var(--lightTextColor)';
-	itemValPadding = itemValPadding || '8px';
-	margin = margin || '0';
-	itemFontSize = itemFontSize || '0.9rem';
-	itemFontWeight = itemFontWeight || 'bold';
-
-	// =======================================================================
-	//  UI
-	// =======================================================================
-	return (
-		<div className='KeyValText'>
-			<div className='item'>
-				<Text color={itemColor} fontSize={itemFontSize} fontWeight={itemFontWeight}>
-					{item}
-				</Text>
-			</div>
-			<Text fontSize='1rem' {...textComponents}>
-				{value}
-			</Text>
-
-			{/* STYLE */}
-			<style jsx>{`
-				.KeyValText {
-					display: ${display};
-					margin: ${margin};
-				}
-				.item {
-					margin-bottom: ${itemValPadding};
-				}
-			`}</style>
-		</div>
-	);
-};
-
 // ================================================================================================
 //  CODYABLE TEXT
 // ================================================================================================
@@ -361,24 +288,28 @@ export const CopyableText = ({ margin, isInline, display, children, ...hightedTe
 	// ================================================================================================
 	return (
 		<div className='CopyableText'>
-			<div className='row'>
-				<HighlightedText padding='10px' isBold={false} {...hightedTextProps}>
-					{children}
-				</HighlightedText>
-				<CopyToClipboard text={children} onCopy={() => alert('copied')}>
-					<Button margin='0 0 0 10px'>Copy</Button>
-				</CopyToClipboard>
-			</div>
+			<HighlightedText  padding="6px 12px"  isBold={false} {...hightedTextProps}>
+				{children}
+			</HighlightedText>
+			<CopyToClipboard text={children} onCopy={() => alert('copied')}>
+				<Button>
+					<IcCopy  size="1.2rem"/>
+				</Button>
+			</CopyToClipboard>
 
 			{/* STYLE */}
 			<style jsx>{`
-				div {
-					display: ${display};
-					margin: ${margin};
+				.CopyableText {
+					display: flex;
+					gap: 10px;
 				}
 
-				.row {
-					display: flex;
+				.CopyableText :global(button){
+					padding: 0;
+					width: 35px;
+					height: 35px;
+					min-width: 0;
+					padding-top: 5px;
 				}
 			`}</style>
 		</div>

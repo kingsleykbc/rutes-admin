@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import WithLink from './withLink';
 import Spinner from './Spinner';
 
-const Button = ({ type = 'button', bold = false, children, disabled, onClick, loading, filled = false, linkHref }) => {
+const Button = ({ type = 'button', bold = true, children, disabled, onClick, loading, filled = false, linkHref }) => {
 	return (
 		<WithLink className='linkButton' link={linkHref}>
 			{type === 'text' ? (
@@ -21,6 +21,7 @@ const Button = ({ type = 'button', bold = false, children, disabled, onClick, lo
 				span {
 					text-decoration: underline;
 					font-weight: ${bold ? 'bold' : 'normal'};
+					color: var(--primaryColor);
 				}
 				button {
 					border: 2px solid var(--primaryColor);

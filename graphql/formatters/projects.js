@@ -10,7 +10,7 @@ export const sessionFeedbacksFormatter = (sessions, view) => {
 			if (
 				view === 'All' ||
 				(view === 'Notes' && val.type === 'note') ||
-				(view === 'Error updates' && val.type === 'error') ||
+				(view === 'Error updates' && val.type === 'error report') ||
 				(view === 'Feature requests' && val.type === 'feature request')
 			)
 				result.push({ ...val, testerEmail: item.testerEmail });
@@ -56,11 +56,16 @@ const getAnswers = (questionID, type, options, sessions, view) => {
 	return questionAnswers;
 };
 
-export const questionnaireResponseFormatter = (data, view) => {
+export const questionnaireResponseFormatter = (data, view, sessionID) => {
 	// 'Pre-session'
 	const result = [];
 	const { sessions, preQuestionnaire, postQuestionnaire } = data;
 	const questions = view === 'Pre-session' ? preQuestionnaire : postQuestionnaire;
+
+	if (sessionID) {
+		const session = sessions.find(item => item.id === sessionID);
+		sessions = session ? [session] : [];
+	}
 
 	questions.forEach(item => {
 		let questionData = { ...item };

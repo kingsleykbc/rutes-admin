@@ -3,7 +3,7 @@ import Annotations from '../../../components/ViewProjectComponents/Annotations';
 import ViewProjectLayout from '../../../components/ViewProjectLayout';
 
 const annotations = () => {
-	return <ViewProjectLayout>{data => <Annotations data={data} />}</ViewProjectLayout>;
+	return <ViewProjectLayout>{(data, refresh) => <Annotations data={data} refresh={refresh} />}</ViewProjectLayout>;
 };
 
 export default annotations;

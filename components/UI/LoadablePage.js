@@ -15,14 +15,14 @@ const LoadablePage = ({ states: { error, loading }, errorMessage, loadingMessage
 
 export default LoadablePage;
 
-const BlankPage = ({ type = 'loading', message = 'Loading data' }) => {
+export const BlankPage = ({ icon, type = 'loading', message = 'Loading data', subMessage }) => {
 	return (
 		<div className='BlankPage'>
 			<div className='icon'>
-				{type === 'loading' ? <Spinner margin='0 0 15px 0' scale={2} /> : <IcError size={59} color='var(--primaryColor)' />}
+				{icon || (type === 'loading' ? <Spinner margin='0 0 15px 0' scale={2} /> : <IcError size={59} color='var(--primaryColor)' />)}
 			</div>
 			<h3>{message}</h3>
-			<p className='lightText'>{type === 'loading' ? 'Please wait while the data is fetched' : 'Please try again later'}</p>
+			<p className='lightText'>{subMessage || (type === 'loading' ? 'Please wait while the data is fetched' : 'Please try again later')}</p>
 
 			{/* STYLE */}
 			<style jsx>{`

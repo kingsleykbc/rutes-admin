@@ -29,7 +29,12 @@ export const getProjectQuery = gql`
 			description
 			projectKey
 			url
-			screenshots
+			screenshots {
+				id
+				device
+				route
+				screenshot
+			}
 			tests {
 				id
 				route
@@ -54,12 +59,18 @@ export const getProjectQuery = gql`
 				testerEmail
 				response {
 					annotations {
+						id
 						route
 						message
 						point {
 							mouseX
 							mouseY
 						}
+						device
+						element {
+							tag
+						}
+						createdAt
 					}
 					feedback {
 						id
@@ -72,10 +83,12 @@ export const getProjectQuery = gql`
 					preQuestionnaireResponse {
 						questionID
 						answer
+						createdAt
 					}
 					postQuestionnaireResponse {
 						questionID
 						answer
+						createdAt
 					}
 				}
 				createdAt
@@ -93,6 +106,7 @@ export const createProjectAction = gql`
 	mutation ($projectData: ProjectData!) {
 		createProject(projectData: $projectData) {
 			id
+			projectKey
 		}
 	}
 `;

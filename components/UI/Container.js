@@ -10,10 +10,10 @@ const Container = ({
 	className = '',
 	margin = '0',
 	padding = '0',
-	responsiveMargin = '0',
-	responsivePadding = '0',
+	responsiveMargin,
+	responsivePadding,
 	align = 'left',
-	responsiveAlign = 'left',
+	responsiveAlign,
 	responsiveWidth = '800px',
 	borderRadius = '0',
 	borderWidth = '1px',
@@ -53,7 +53,7 @@ const Container = ({
 	return (
 		<div className={`Container ${className}`}>
 			{children}
-			
+
 			{/* STYLE */}
 			<style jsx>{`
 				.Container {
@@ -67,9 +67,9 @@ const Container = ({
 
 				@media screen and (max-width: ${responsiveWidth}) {
 					.Container {
-						margin: ${responsiveMargin};
-						padding: ${responsivePadding};
-						text-align: ${responsiveAlign};
+						margin: ${responsiveMargin || margin};
+						padding: ${responsivePadding || padding};
+						text-align: ${responsiveAlign || align};
 						border-top: none;
 						border-left: none;
 						border-bottom: none;

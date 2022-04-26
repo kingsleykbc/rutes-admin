@@ -1,11 +1,12 @@
 import React from 'react';
-import Notifications from './HomeComponents/Notifications';
 import Projects from './HomeComponents/Projects';
 
+/**
+ * HOME PAGE: PROJECT LIST
+ */
 const Home = () => {
 	return (
 		<div className='Home'>
-			{/* <Notifications /> */}
 			<Projects />
 
 			{/* STYLE */}

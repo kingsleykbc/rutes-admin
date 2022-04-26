@@ -6,6 +6,10 @@ import { useRouter } from 'next/router';
 
 const LoginLayout = ({ children }) => {
 	const { asPath } = useRouter();
+
+	// ===================================================================================================================
+	//  UI
+	// ===================================================================================================================
 	return (
 		<div className='LoginLayout'>
 			<div className='loginBox'>

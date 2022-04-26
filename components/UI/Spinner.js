@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * SPINNING LOADER
+ */
 const Spinner = ({ margin = '0', scale = 1, color = 'var(--primaryColor)' }) => {
 	return (
 		<div className='SpinnerContainer'>

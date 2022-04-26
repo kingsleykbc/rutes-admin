@@ -4,6 +4,9 @@ import Container from './UI/Container';
 import { useAuth } from '../contexts/AuthContext';
 import { HighlightedText } from './UI/TextComponents';
 
+/**
+ * LOGIN
+ */
 const Login = () => {
 	const { login } = useAuth();
 	const [email, setEmail] = useState('');

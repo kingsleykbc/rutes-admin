@@ -3,11 +3,7 @@ import SessionResult from '../../../../components/ViewProjectComponents/SessionR
 import ViewProjectLayout from '../../../../components/ViewProjectLayout';
 
 const result = () => {
-	return (
-		<ViewProjectLayout>
-			<SessionResult />
-		</ViewProjectLayout>
-	);
+	return <ViewProjectLayout>{data => <SessionResult data={data} />}</ViewProjectLayout>;
 };
 
 export default result;

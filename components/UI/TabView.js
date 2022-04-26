@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import classnames from 'classnames';
 
+/**
+ * TAB VIEW
+ */
 const TabView = ({ tabs, onChange, content, children }) => {
 	const [selectedTab, setSelectedTab] = useState(tabs[0]);
 

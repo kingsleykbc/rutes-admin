@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * SECTION WRAPPER WITH MAX WIDTH, TITLE, AND PADDING
+ */
 const Section = ({
 	title,
 	sideContent,
@@ -33,7 +36,7 @@ const Section = ({
 					padding: 20px 0;
 					margin-bottom: 20px;
 					display: flex;
-          align-items: center;
+					align-items: center;
 					justify-content: space-between;
 					border-bottom: var(--border);
 				}

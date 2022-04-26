@@ -6,8 +6,13 @@ import { HighlightedText } from './UI/TextComponents';
 import { signUpAction } from '../graphql/queries/auth';
 import { useMutation } from '@apollo/client';
 
+/**
+ * SIGN UP
+ */
 const SignUp = () => {
 	const { login } = useAuth();
+
+	// FORM STATES
 	const [isLoading, setIsLoading] = useState(false);
 	const [fullName, setFullName] = useState('');
 	const [email, setEmail] = useState('');

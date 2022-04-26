@@ -1,6 +1,5 @@
 import { useMutation } from '@apollo/client';
 import { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
 import { createProjectAction } from '../graphql/queries/projects';
 import QuestionnaireInput from './AddProjectComponents/QuestionnaireInput';
 import TestsInput from './AddProjectComponents/TestsInput';
@@ -80,13 +79,12 @@ const AddProject = () => {
 			};
 
 			// Add project
-			await addProject({ variables: { projectData } });
-
+			const data = await addProject({ variables: { projectData } });
+	
 			// Back to home screen
-			Router.push('/');
+			Router.push(`/view/${data.data.createProject.projectKey}/details`);
 		} catch (e) {
 			console.log(e.networkError.result.errors.map(item => item.message));
-			// console.log(JSON.stringify(e));
 			setError(e.message);
 		}
 		setIsLoading(false);

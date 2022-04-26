@@ -11,12 +11,14 @@ import LoadablePage from './UI/LoadablePage';
 const ViewProjectLayout = ({ children }) => {
 	const { query } = useRouter();
 
-	const { data, error, loading } = useQuery(getProjectQuery, { variables: { projectKey: query.projectKey } });
+	const { data, error, loading, refetch } = useQuery(getProjectQuery, { variables: { projectKey: query.projectKey || 'loading..' } });
 	const [toggleSidebar, setToggleSidebar] = useState(false);
 	const { height } = useWindowSize();
 
+	// ===================================================================================================================
+	//  UI
+	// ===================================================================================================================
 	if (error || loading) return <LoadablePage states={{ error, loading }} />;
-
 	return (
 		<div className={classnames(['ViewProjectLayout', { sidebarOff: toggleSidebar }])}>
 			{/* TOGGLE ICON */}
@@ -30,7 +32,7 @@ const ViewProjectLayout = ({ children }) => {
 			</aside>
 
 			{/* CONTENT */}
-			<div className='content'>{children(data.project)}</div>
+			<div className='content'>{children(data.project, refetch)}</div>
 
 			{/* STYLE */}
 			<style jsx>{`
@@ -51,7 +53,6 @@ const ViewProjectLayout = ({ children }) => {
 					position: relative;
 					left: 300px;
 					width: calc(100% - 300px);
-					padding-bottom: 50px;
 					min-height: calc(${height + ' - '} 56px);
 				}
 
@@ -98,7 +99,6 @@ const ViewProjectLayout = ({ children }) => {
 
 					.content,
 					aside {
-						padding-top: 70px;
 						box-shadow: var(--boxShadow);
 					}
 				}

@@ -18,9 +18,9 @@ const SideMenu = ({ query, data }) => {
 		<div className='SideMenu'>
 			<div className='menu'>
 				<MenuItem query={query} icon={<IcProject />} label='Details' path='/details' />
+				<MenuItem query={query} icon={<IcChat />} label='Chat' path='/chat' />
 				<MenuItem query={query} icon={<IcAnnotation />} label='Annotations' path='/annotations' />
 				<MenuItem query={query} icon={<IcFeedback />} label='Feedback' path='/feedback' />
-				<MenuItem query={query} icon={<IcChat />} label='Chat' path='/chat' />
 				{hasQuestionnaires && <MenuItem query={query} icon={<IcQuestion />} label='Questionnaire Responses' path='/responses' />}
 			</div>
 
@@ -58,16 +58,18 @@ const MenuItem = ({ icon, label, path, query }) => {
 					display: flex;
 					align-items: center;
 					padding: 12px 15px;
+					border-bottom: var(--border);
 					gap: 17px;
+					border-radius: 5px;
 				}
 
 				:global(.MenuItem):hover {
-					background: rgba(255, 255, 255, 0.616);
+					background: rgba(255, 255, 255, 0.7);
 				}
 
 				:global(.MenuItem.active) {
 					background: #fff;
-					border-radius: 5px;
+					border: none;
 					border-left: 5px solid var(--primaryColor);
 					box-shadow: var(--boxShadow);
 				}

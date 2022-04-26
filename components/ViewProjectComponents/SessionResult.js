@@ -1,23 +1,31 @@
-import React, { useState } from 'react';
-import { response, sessions } from '../../dummybase';
+import React from 'react';
 import Section from '../UI/Section';
 import Feedback from './SessionResultComponents/Feedback';
 import Annotations from './SessionResultComponents/Annotations';
 import TopSession from './SessionResultComponents/TopSession';
 import QuestionnaireResponses from './SessionResultComponents/QuestionnaireResponses';
+import { useRouter } from 'next/router';
 
-const SessionResult = () => {
-	const [route, setRoute] = useState('/');
-	const sessionData = sessions[0];
-	const responseData = response;
+/**
+ * INDIVIDUAL SESSION RESULT
+ */
+const SessionResult = ({ data }) => {
+	const {
+		query: { sessionID }
+	} = useRouter();
+	const hasQuestionnaires = data.preQuestionnaire.length > 0 || data.postQuestionnaire.length > 0;
+	const session = data.sessions.find(item => item.id === sessionID);
 
+	// ===================================================================================================================
+	//  UI
+	// ===================================================================================================================
 	return (
 		<div className='SessionResult'>
-			<Section>
-				<TopSession data={sessionData} />
-				<Annotations />
-				<Feedback />
-				<QuestionnaireResponses />
+			<Section maxWidth='1000px'>
+				<TopSession data={session} />
+				<Annotations screenshots={data.screenshots} session={session} />
+				<Feedback session={session} />
+				{hasQuestionnaires && <QuestionnaireResponses data={data} sessionID={sessionID} />}
 			</Section>
 			{/* STYLE */}
 			<style jsx>{`

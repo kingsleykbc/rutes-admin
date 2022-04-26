@@ -5,9 +5,11 @@ import Section from '../UI/Section';
 import TabView from '../UI/TabView';
 import FeedbackItem from './FeedbackComponents/FeedbackItem';
 
+/**
+ * FEEDBACK
+ */
 const Feedback = ({ data: { sessions } }) => {
 	const [view, setView] = useState('All');
-
 	const data = sessionFeedbacksFormatter(sessions, view);
 
 	// ===================================================================================================================

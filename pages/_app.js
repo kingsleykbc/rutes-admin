@@ -9,7 +9,7 @@ import apolloClient from '../lib/apollo';
 import SearchContextProvider from '../contexts/SearchContext';
 
 /**
- * SETUP N-PROGRESS LOADER
+ * SETUP N-PROGRESS LOADER (LOADING BAR THAT APPEARS AT THE TOP OF THE SCREEN)
  */
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());

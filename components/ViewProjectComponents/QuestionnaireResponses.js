@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { response } from '../../dummybase';
 import { questionnaireResponseFormatter } from '../../graphql/formatters/projects';
 import EmptySet from '../UI/EmptySet';
 import Section from '../UI/Section';

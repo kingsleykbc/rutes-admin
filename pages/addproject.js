@@ -1,12 +1,6 @@
 import React from 'react';
 import AddProject from '../components/AddProject';
 
-const addproject = () => {
-	return (
-		<div className='addproject'>
-			<AddProject />
-		</div>
-	);
-};
+const addproject = () => <AddProject />;
 
 export default addproject;

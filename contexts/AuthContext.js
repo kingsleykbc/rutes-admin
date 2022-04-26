@@ -62,7 +62,7 @@ export const AuthContextProvider = ({ children }) => {
 				data: { login: token }
 			} = await handleLogin({ variables: { loginData: { email, password } } });
 
-			cookie.set('rutes-frontend-token', token);
+			cookie.set('rutes-frontend-token', token, { expires: 30 });
 			const userData = await getUserData(token);
 			setUser({ ...userData, token });
 			Router.push('/');
