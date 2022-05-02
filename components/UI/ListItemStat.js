@@ -4,7 +4,7 @@ const ListItemStat = ({ icon, children }) => {
 	return (
 		<div className='Stat'>
 			{icon}
-			{children}
+			<span>{children}</span>
 
 			{/* STYLE */}
 			<style jsx>{`
@@ -17,6 +17,23 @@ const ListItemStat = ({ icon, children }) => {
 					background: var(--highlightColor);
 					border-radius: 50px;
 					padding: 4px 15px;
+					max-width: 100%;
+				}
+				span {
+					display: block;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+
+				@media screen and (max-width: 700px){
+					.Stat {
+						margin-top: 10px;
+					}
+					span {
+						max-width: 250px;
+						flex-grow: 1;
+					}
 				}
 			`}</style>
 		</div>

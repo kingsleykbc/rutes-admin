@@ -80,7 +80,7 @@ const AddProject = () => {
 
 			// Add project
 			const data = await addProject({ variables: { projectData } });
-	
+
 			// Back to home screen
 			Router.push(`/view/${data.data.createProject.projectKey}/details`);
 		} catch (e) {

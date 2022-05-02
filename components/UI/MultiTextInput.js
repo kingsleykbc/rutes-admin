@@ -3,7 +3,15 @@ import EmptySet from './EmptySet';
 import { MdDelete as IcDelete } from 'react-icons/md';
 import Button from './Button';
 
-const MultiTextInput = ({ onChange, value, type = 'text', placeholder = 'Nothing Added', itemPrefix = 'Item' }) => {
+const MultiTextInput = ({
+	onChange,
+	disabled = false,
+	value,
+	addButtonLabel = 'Add',
+	type = 'text',
+	placeholder = 'Nothing Added',
+	itemPrefix = 'Item'
+}) => {
 	const [options, setOptions] = useState([]);
 
 	useEffect(() => {
@@ -32,7 +40,9 @@ const MultiTextInput = ({ onChange, value, type = 'text', placeholder = 'Nothing
 		onChange(newOptions);
 	};
 
-	const addedOptions = options.map((o, index) => <AddedOption onRemove={() => onRemove(index)} key={`${o}_${index}`} option={o} />);
+	const addedOptions = options.map((o, index) => (
+		<AddedOption onRemove={() => onRemove(index)} key={`${o}_${index}`} option={o} disabled={disabled} />
+	));
 
 	// ===================================================================================================================
 	//  UI
@@ -50,10 +60,12 @@ const MultiTextInput = ({ onChange, value, type = 'text', placeholder = 'Nothing
 			</div>
 
 			{/* ADD BUTTON */}
-			<form onSubmit={onAdd}>
-				<input className='MultiTextInputForm' required type={type} placeholder={`${itemPrefix} ${options.length + 1}`} />
-				<Button>Add</Button>
-			</form>
+			{!disabled && (
+				<form onSubmit={onAdd}>
+					<input className='MultiTextInputForm' required type={type} placeholder={`${itemPrefix} ${options.length + 1}`} />
+					<Button>{addButtonLabel}</Button>
+				</form>
+			)}
 
 			{/* STYLE */}
 			<style jsx>{`
@@ -78,13 +90,15 @@ const MultiTextInput = ({ onChange, value, type = 'text', placeholder = 'Nothing
 
 export default MultiTextInput;
 
-const AddedOption = ({ option, onRemove }) => (
+const AddedOption = ({ option, onRemove, disabled }) => (
 	<div className='option'>
 		<div>{option} </div>
 
-		<div className='deleteIcon' onClick={onRemove}>
-			<IcDelete color='#fff' />
-		</div>
+		{!disabled && (
+			<div className='deleteIcon' onClick={onRemove}>
+				<IcDelete color='#fff' />
+			</div>
+		)}
 
 		{/* STYLE */}
 		<style jsx>{`

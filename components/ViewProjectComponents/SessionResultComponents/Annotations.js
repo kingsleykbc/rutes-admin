@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import RouteAnnotations from '../AnnotationsComponents/RouteAnnotations';
-import useWindowSize from '../../../hooks/useWindowSize';
+import EmptySet from '../../UI/EmptySet';
 
 const Annotations = ({ screenshots, session }) => {
-	const { height } = useWindowSize();
-
 	/**
 	 * GET DATA
 	 */
@@ -12,11 +10,17 @@ const Annotations = ({ screenshots, session }) => {
 	const [route, setRoute] = useState(routes[0] || '');
 	const [device, setDevice] = useState(devices[0] || '');
 	const annotations = getAnnotations(route, device, session);
-	const { screenshot } = screenshots.find(item => item.device === device && item.route === route);
+	const { screenshot } = screenshots.find(item => item.device === device && item.route === route) || {};
 
 	// ===================================================================================================================
 	//  UI
 	// ===================================================================================================================
+	if (annotations.length === 0)
+		return (
+			<div style={{ marginTop: '20px' }}>
+				<h3>Annotations</h3> <EmptySet>No annotations</EmptySet>
+			</div>
+		);
 	return (
 		<div className='subSection'>
 			{/* TOP SECTION */}

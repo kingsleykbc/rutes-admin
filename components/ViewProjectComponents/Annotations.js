@@ -5,6 +5,7 @@ import { AiOutlineUser as IcUser } from 'react-icons/ai';
 import { HiOutlineAnnotation as IcAnnotation } from 'react-icons/hi';
 import useWindowSize from '../../hooks/useWindowSize';
 import { MdRefresh as IcRefresh } from 'react-icons/md';
+import EmptySet from '../UI/EmptySet';
 
 const Annotations = ({ data: { screenshots, sessions }, refresh }) => {
 	const { height } = useWindowSize();
@@ -16,11 +17,12 @@ const Annotations = ({ data: { screenshots, sessions }, refresh }) => {
 	const [route, setRoute] = useState(routes[0] || '');
 	const [device, setDevice] = useState(devices[0] || '');
 	const annotations = getAnnotations(route, device, sessions);
-	const { screenshot } = screenshots.find(item => item.device === device && item.route === route);
+	const { screenshot } = screenshots.find(item => item.device === device && item.route === route) || {};
 
 	// ===================================================================================================================
 	//  UI
 	// ===================================================================================================================
+	if (annotations.length === 0) return <EmptySet>No annotations</EmptySet>;
 	return (
 		<div className='Annotations'>
 			{/* TOP SECTION */}

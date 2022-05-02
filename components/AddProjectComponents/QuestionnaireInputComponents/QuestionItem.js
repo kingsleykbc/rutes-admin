@@ -8,12 +8,12 @@ const QuestionItem = ({ data, onDelete }) => {
 	return (
 		<div className='QuestionItem whiteboard'>
 			<div className='topSection'>
-				<div className='icon'>{data.questionType === 'text' ? <IcTextQuestion /> : <IcMultiChoiceQuestion />}</div>
+				<div className='icon'>{data.type === 'text' ? <IcTextQuestion /> : <IcMultiChoiceQuestion />}</div>
 				<p>{data.question}</p>
 				{onDelete && <ClickableIcon hasShadow icon={<IcDelete color='var(--primaryColor)' />} onClick={onDelete} />}
 			</div>
 
-			{data.questionType === 'multi-choice' && (
+			{data.type === 'multi-choice' && (
 				<div className='options'>
 					<h4>Options</h4>
 					<ul>

@@ -18,11 +18,6 @@ const TopSession = ({ data }) => {
 					<ListItemStat icon={<IcProgress />}>{data.progress}%</ListItemStat>
 				</div>
 			</div>
-			<div className='routeSelect'>
-				<select>
-					<option>Route</option>
-				</select>
-			</div>
 
 			{/* STYLE */}
 			<style jsx>{`
@@ -31,7 +26,6 @@ const TopSession = ({ data }) => {
 					display: flex;
 					gap: 20px;
 					align-items: center;
-				
 				}
 
 				.stats {

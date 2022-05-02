@@ -81,7 +81,7 @@ const AddTestItem = ({ onAdd, addedRoutes, url, toggle }) => {
 			<div className='instructions'>
 				<h3>Instructions</h3>
 				<div className='instructionsList'>
-					<MultiTextInput onChange={setInstructions} value={instructions} />
+					<MultiTextInput itemPrefix='Task' onChange={setInstructions} value={instructions} addButtonLabel="Add Task" />
 				</div>
 			</div>
 

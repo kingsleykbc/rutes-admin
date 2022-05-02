@@ -5,6 +5,7 @@ import Annotations from './SessionResultComponents/Annotations';
 import TopSession from './SessionResultComponents/TopSession';
 import QuestionnaireResponses from './SessionResultComponents/QuestionnaireResponses';
 import { useRouter } from 'next/router';
+import CompletedTests from './SessionResultComponents/CompletedTests';
 
 /**
  * INDIVIDUAL SESSION RESULT
@@ -23,10 +24,12 @@ const SessionResult = ({ data }) => {
 		<div className='SessionResult'>
 			<Section maxWidth='1000px'>
 				<TopSession data={session} />
+				<CompletedTests session={session} />
 				<Annotations screenshots={data.screenshots} session={session} />
 				<Feedback session={session} />
 				{hasQuestionnaires && <QuestionnaireResponses data={data} sessionID={sessionID} />}
 			</Section>
+
 			{/* STYLE */}
 			<style jsx>{`
 				.SessionResult :global(.title) {

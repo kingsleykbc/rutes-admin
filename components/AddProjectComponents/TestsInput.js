@@ -23,7 +23,7 @@ const TestsInput = ({ data, onChange, onDelete, url }) => {
 					No Tests Added
 				</EmptySet>
 				{data.map((item, index) => (
-					<TestItem key={item.route} data={item} onDelete={() => onDelete(index)} />
+					<TestItem key={item.route + index} data={item} onDelete={() => onDelete(index)} />
 				))}
 			</Container>
 			<Container align='center'>

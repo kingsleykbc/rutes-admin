@@ -67,6 +67,22 @@ const ProjectListItem = ({ data }) => {
 						margin: 10px 0 20px 0;
 						opacity: 0.6;
 					}
+					.stats {
+						display: flex;
+					}
+
+					@media screen and (max-width: 700px) {
+						.icon {
+							display: none;
+						}
+
+						.stats {
+							flex-direction: column;
+							width: 100%;
+							overflow: hidden;
+							align-items: flex-start;
+						}
+					}
 				`}</style>
 			</a>
 		</Link>

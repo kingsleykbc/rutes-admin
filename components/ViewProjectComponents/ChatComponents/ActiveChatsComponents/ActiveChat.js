@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BiMessageDetail as IcMessage } from 'react-icons/bi';
-import { collection, orderBy, where, query, onSnapshot, doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../../../lib/firebase';
 
 const ActiveChat = ({ data, selected, onSelectChat }) => {
@@ -14,7 +14,9 @@ const ActiveChat = ({ data, selected, onSelectChat }) => {
 			const lastMessage = await getDoc(doc(db, 'rutes-message', data.lastMessage));
 			setLastMessage(lastMessage.data().message);
 		};
-		getLastMessage();
+
+		if (data.lastMessage) getLastMessage();
+		else setLastMessage('No messages');
 	}, [data.lastMessage]);
 
 	// ===================================================================================================================

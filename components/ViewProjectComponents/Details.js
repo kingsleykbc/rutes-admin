@@ -8,6 +8,7 @@ import TopSection from './DetailsComponents/TopSection';
 import Container from '../UI/Container';
 import EmptySet from '../UI/EmptySet';
 import { CopyableText } from '../UI/TextComponents';
+import MultiTextInput from '../UI/MultiTextInput';
 
 /**
  * PROJECT DETAILS AND IMPORT CODE
@@ -21,7 +22,7 @@ const Details = ({ data }) => (
 		<DetailsSection title='Installation'>
 			<p>
 				Download the tester library from{' '}
-				<a download='rutes-library.min' href='../../docs/bundle.min.js'>
+				<a download='rutes-library.min.js' href='../../docs/bundle.min.js'>
 					<Button type='text'> here</Button>
 				</a>{' '}
 				and copy the following snippet into site-under-test.
@@ -85,9 +86,14 @@ const Details = ({ data }) => (
 			</DetailsSection>
 		)}
 
+		{/* APPROVED TESTERS */}
+		<DetailsSection title='Approved testers'>
+			<MultiTextInput value={data.approvedTesters} disabled />
+		</DetailsSection>
+
 		{/* SCREENSHOTS */}
 		<DetailsSection title='Screenshots'>
-			{data.screenshots.length === 0 && <EmptySet>No Screenshots yet</EmptySet>}
+			{data.screenshots.length === 0 && <EmptySet margin='20px 0'>No Screenshots yet</EmptySet>}
 			{data.screenshots.map(item => (
 				<div className='screenshot whiteboard' key={item.id}>
 					<div className='screenshotImage'>

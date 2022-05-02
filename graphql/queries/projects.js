@@ -53,6 +53,7 @@ export const getProjectQuery = gql`
 				question
 				options
 			}
+			approvedTesters
 			sessions {
 				id
 				progress
@@ -71,6 +72,10 @@ export const getProjectQuery = gql`
 							tag
 						}
 						createdAt
+					}
+					recordings {
+						route
+						recording
 					}
 					feedback {
 						id

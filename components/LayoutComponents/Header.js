@@ -7,7 +7,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import Button from '../UI/Button';
 import { useSearch } from '../../contexts/SearchContext';
 
-const Header = () => {
+const Header = ({ route }) => {
 	const { user, logout } = useAuth();
 	const { keyword, setKeyword } = useSearch();
 
@@ -16,13 +16,16 @@ const Header = () => {
 	// ===================================================================================================================
 	return (
 		<div className='Header'>
+			{/* LOGO */}
 			<Logo responsiveShowText={false} />
 
 			{/* SEARCH BAR */}
-			<div className='searchBar'>
-				<IcSearch />
-				<input value={keyword}  type='search' onChange={({ target: { value } }) => setKeyword(value)} placeholder='Search Projects' />
-			</div>
+			{route === '/' && (
+				<div className='searchBar'>
+					<IcSearch />
+					<input value={keyword} type='search' onChange={({ target: { value } }) => setKeyword(value)} placeholder='Search Projects' />
+				</div>
+			)}
 
 			{/* ACCOUNT SECTION */}
 			<Account user={user} logout={logout} />
@@ -32,6 +35,7 @@ const Header = () => {
 				.Header {
 					display: flex;
 					align-items: center;
+					height: 56px;
 					position: sticky;
 					top: 0;
 					left: 0;

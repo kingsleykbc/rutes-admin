@@ -57,9 +57,9 @@ const MenuItem = ({ icon, label, path, query }) => {
 				:global(.MenuItem) {
 					display: flex;
 					align-items: center;
-					padding: 12px 15px;
+					padding: 13px 15px;
 					border-bottom: var(--border);
-					gap: 17px;
+					gap: 23px;
 					border-radius: 5px;
 				}
 
@@ -75,11 +75,15 @@ const MenuItem = ({ icon, label, path, query }) => {
 				}
 
 				.icon {
-					font-size: 1.6rem;
+					font-size: 1.5rem;
 					margin-bottom: -4px;
 				}
 
 				.icon :global(svg) {
+					color: var(--lightText);
+				}
+
+				:global(.MenuItem.active svg) {
 					color: var(--primaryColor);
 				}
 			`}</style>
