@@ -12,7 +12,7 @@ const TopSession = ({ data }) => {
 				<IcSession />
 			</div>
 			<div className='details'>
-				<h3>Session</h3>
+				<h3>Session {data.id}</h3>
 				<div className='stats'>
 					<ListItemStat icon={<IcUser />}>{data.testerEmail}</ListItemStat>
 					<ListItemStat icon={<IcProgress />}>{data.progress}%</ListItemStat>

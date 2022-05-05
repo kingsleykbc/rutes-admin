@@ -39,6 +39,7 @@ const Login = () => {
 	// ===================================================================================================================
 	return (
 		<form onSubmit={handleLogin}>
+			{/* LOGIN FORM */}
 			<div className='formField'>
 				<h4>Email</h4>
 				<input type='text' value={email} required placeholder='john@example.com' onChange={e => setEmail(e.target.value)} />
@@ -55,6 +56,8 @@ const Login = () => {
 					{error}
 				</HighlightedText>
 			)}
+
+			{/* PRE-FILL LOGIN FORM */}
 			<Container align='center'>
 				<PageDivider labelPosition='center'>OR</PageDivider>
 				<div className='prefill' onClick={handlePrefill}>

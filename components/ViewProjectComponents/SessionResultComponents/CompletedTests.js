@@ -44,7 +44,7 @@ const Test = ({ route, recordings }) => {
 		<div className='whiteboard'>
 			<div className='section'>
 				<div className='sectionInner'>
-					<IcCheck />
+					<IcCheck fontSize="1.5rem" color="#3ae8ab" />
 					<span>
 						<b>{route}</b> test
 					</span>

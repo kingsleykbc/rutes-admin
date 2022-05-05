@@ -26,6 +26,9 @@ const Details = ({ data }) => (
 					<Button type='text'> here</Button>
 				</a>{' '}
 				and copy the following snippet into site-under-test.
+				<br />
+				<br />
+				<b>IMPORTANT: </b> Include the code at after the body tag, not inside.
 			</p>
 			<div>
 				<pre>

@@ -10,6 +10,9 @@ import Section from './UI/Section';
 import { HighlightedText } from './UI/TextComponents';
 import Router from 'next/router';
 
+/**
+ * ADD PROJECT FORM
+ */
 const AddProject = () => {
 	const [addProject] = useMutation(createProjectAction);
 

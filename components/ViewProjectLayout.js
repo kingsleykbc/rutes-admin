@@ -8,6 +8,9 @@ import { getProjectQuery } from '../graphql/queries/projects';
 import { useRouter } from 'next/router';
 import LoadablePage from './UI/LoadablePage';
 
+/**
+ * PROJECT LAYOUT FOR THE VIEW PROJECT SCREEN
+ */
 const ViewProjectLayout = ({ children }) => {
 	const { query } = useRouter();
 

@@ -288,12 +288,12 @@ export const CopyableText = ({ margin, isInline, display, children, ...hightedTe
 	// ================================================================================================
 	return (
 		<div className='CopyableText'>
-			<HighlightedText  padding="6px 12px"  isBold={false} {...hightedTextProps}>
+			<HighlightedText padding='6px 12px' isBold={false} {...hightedTextProps}>
 				{children}
 			</HighlightedText>
 			<CopyToClipboard text={children} onCopy={() => alert('copied')}>
 				<Button>
-					<IcCopy  size="1.2rem"/>
+					<IcCopy size='1.2rem' />
 				</Button>
 			</CopyToClipboard>
 
@@ -304,7 +304,7 @@ export const CopyableText = ({ margin, isInline, display, children, ...hightedTe
 					gap: 10px;
 				}
 
-				.CopyableText :global(button){
+				.CopyableText :global(button) {
 					padding: 0;
 					width: 35px;
 					height: 35px;
