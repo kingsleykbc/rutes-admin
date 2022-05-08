@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import RouteAnnotations from '../AnnotationsComponents/RouteAnnotations';
-import { annotations as annotationsResult, feedback } from '../../../dummybase';
 import TabView from '../../UI/TabView';
 import FeedbackItem from '../FeedbackComponents/FeedbackItem';
 import { sessionFeedbacksFormatter } from '../../../graphql/formatters/projects';
