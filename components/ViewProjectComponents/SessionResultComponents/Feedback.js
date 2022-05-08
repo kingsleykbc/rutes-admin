@@ -23,7 +23,7 @@ const Feedback = ({ session }) => {
 			<div className='content'>
 				{data.length === 0 && (
 					<EmptySet>
-						This user hasn't left any <b>{view}</b> feedback yet
+						This user has not left any <b>{view}</b> feedback yet
 					</EmptySet>
 				)}
 
