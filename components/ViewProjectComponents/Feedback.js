@@ -24,7 +24,11 @@ const Feedback = ({ data: { sessions } }) => {
 
 			{/* FEEDBACK ITEMS */}
 			<Section>
-				{data.length === 0 && <EmptySet>No &quot;{view}&quot; feedback yet</EmptySet>}
+				{data.length === 0 && (
+					<EmptySet>
+						No <b>{view}</b> feedback yet
+					</EmptySet>
+				)}
 				{data.map(item => (
 					<FeedbackItem key={item.id} data={item} />
 				))}
