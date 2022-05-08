@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import WithLink from './withLink';
+import WithLink from './WithLink';
 import Spinner from './Spinner';
 
 const Button = ({ type = 'button', bold = true, children, disabled, onClick, loading, filled = false, linkHref }) => {
