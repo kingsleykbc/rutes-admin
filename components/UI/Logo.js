@@ -1,6 +1,6 @@
 import React from 'react';
 import { HiOutlineBeaker as IcLogo } from 'react-icons/hi';
-import WithLink from './withLink';
+import WithLink from './WithLink';
 
 const Logo = ({ size, showText = true, responsiveShowText = true, responsiveWidth = '800px', withLink = true }) => {
 	return (
