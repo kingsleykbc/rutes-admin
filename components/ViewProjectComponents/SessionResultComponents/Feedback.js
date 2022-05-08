@@ -21,7 +21,11 @@ const Feedback = ({ session }) => {
 			</div>
 
 			<div className='content'>
-				{data.length === 0 && <EmptySet>This user hasn't left any &quot;{view}&quot; feedback yet</EmptySet>}
+				{data.length === 0 && (
+					<EmptySet>
+						This user hasn't left any <b>{view}</b> feedback yet
+					</EmptySet>
+				)}
 
 				{data.map(item => (
 					<FeedbackItem key={item.id} data={item} />
