@@ -13,17 +13,20 @@ const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
 
 	/**
 	 * HANDLE LOGIN
 	 */
 	const handleLogin = async e => {
+		setIsLoading(true);
 		e.preventDefault();
 		try {
 			await login(email, password);
 		} catch (e) {
 			setError(e.message.includes('User not found') ? 'Invalid credentials' : e.message);
 		}
+		setIsLoading(false);
 	};
 
 	/**
@@ -49,7 +52,9 @@ const Login = () => {
 				<input type='password' value={password} required onChange={e => setPassword(e.target.value)} />
 			</div>
 			<Container>
-				<Button filled>Login</Button>
+				<Button loading={isLoading} filled>
+					Login
+				</Button>
 			</Container>
 			{error && (
 				<HighlightedText type='danger' width='100%'>
