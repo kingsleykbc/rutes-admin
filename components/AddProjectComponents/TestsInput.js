@@ -18,6 +18,13 @@ const TestsInput = ({ data, onChange, onDelete, url }) => {
 		<div className='TestsInput'>
 			<h4>Tests/Prompts</h4>
 
+			<p className='lightText' style={{ paddingTop: '12px', fontSize: '0.9rem', lineHeight: '27px' }}>
+				<b>NOTE:</b> RUTES currently does not support persisting session state through pages or handling route change events.
+				Therefore, kindly avoid instructions that involve reloading pages or changing routes BEFORE they are marked as complete.
+				<br/>
+				A good option is to make {'"Mark as complete"'} a task. E.g., {'"Mark as complete then click sign in"'}.
+			</p>
+
 			<Container margin='20px 0' className='tests'>
 				<EmptySet margin='0' data={data}>
 					No Tests Added

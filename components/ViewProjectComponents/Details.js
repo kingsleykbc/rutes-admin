@@ -22,7 +22,7 @@ const Details = ({ data }) => (
 		<DetailsSection title='Installation'>
 			<p>
 				Download the tester library from{' '}
-				<a download='rutes-library.min.js' href='../../docs/bundle.min.js'>
+				<a download='bundle.min.js' href='../../docs/bundle.min.js'>
 					<Button type='text'> here</Button>
 				</a>{' '}
 				and copy the following snippet into site-under-test.
@@ -33,13 +33,13 @@ const Details = ({ data }) => (
 			<div>
 				<pre>
 					<code className='code'>{`
+<!-- RUTES TESTER LIBRARY IMPORT -->
 <div id="root"></div>						
-
-</* Optional (if you wan't to add the data-projectKey attribute) */>
-<script>
-	window.rutes_project_key = '${data.projectKey}';
+<script>	
+	// Optional (only if you don't add the data-projectKey attribute)
+	window.rutes_project_key = '${data.projectKey}'; 
 </script>
-<script data-projectKey='${data.projectKey}' src='./bundle.min.js' />
+<script data-projectKey='${data.projectKey}' src='`}<i className="codePlaceholder">{"path to bundle.min.js"}</i>{`'></script>
 						`}</code>
 				</pre>
 			</div>
@@ -160,6 +160,13 @@ const Details = ({ data }) => (
 				display: block;
 				text-align: center;
 				padding: 15px 25px;
+			}
+
+			.codePlaceholder {
+				border: 1px dashed var(--primaryColor);
+				display: inline-block;
+				padding: 0 5px;
+				color: var(--primaryColor);
 			}
 		`}</style>
 	</Section>

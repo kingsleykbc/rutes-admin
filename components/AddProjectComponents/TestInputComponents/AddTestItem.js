@@ -32,11 +32,8 @@ const AddTestItem = ({ onAdd, addedRoutes, url, toggle }) => {
 	 */
 	const validate = data => {
 		if (!route) return 'Enter the route';
-
 		if (addedRoutes.includes(route)) return 'This route already exists';
-
 		if (instructions.length === 0) return 'Enter at least one instruction';
-
 		return '';
 	};
 
@@ -79,9 +76,13 @@ const AddTestItem = ({ onAdd, addedRoutes, url, toggle }) => {
 
 			{/* INSTRUCTIONS */}
 			<div className='instructions'>
-				<h3>Instructions</h3>
+				<h3>Tasks</h3>
+				<p className='lightText' style={{ paddingTop: '12px', fontSize: '0.93rem', lineHeight: '27px' }}>
+					Remember to avoid tasks that involve reloading or changing routes before marking as complete. Best practice is to add{' '}
+					{'"Mark as complete"'} as the last task on the list.
+				</p>
 				<div className='instructionsList'>
-					<MultiTextInput itemPrefix='Task' onChange={setInstructions} value={instructions} addButtonLabel="Add Task" />
+					<MultiTextInput itemPrefix='Task' placeholder='No tasks added' onChange={setInstructions} value={instructions} addButtonLabel='Add Task' />
 				</div>
 			</div>
 

@@ -87,7 +87,6 @@ const AddProject = () => {
 			// Back to home screen
 			Router.push(`/view/${data.data.createProject.projectKey}/details`);
 		} catch (e) {
-			console.log(e.networkError.result.errors.map(item => item.message));
 			setError(e.message);
 		}
 		setIsLoading(false);
