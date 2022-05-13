@@ -56,7 +56,7 @@ const ViewProjectLayout = ({ children }) => {
 					position: relative;
 					left: 300px;
 					width: calc(100% - 300px);
-					min-height: calc(${height + ' - '} 56px);
+					min-height: calc(${height + ' - '} 57px);
 				}
 
 				aside,

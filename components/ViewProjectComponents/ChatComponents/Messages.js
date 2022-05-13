@@ -58,7 +58,7 @@ const Messages = ({ selectedSession: { id: sessionID, testerTyping, testerEmail 
 
 				.messageContent {
 					height: 100%;
-					padding-bottom: 10px;
+					padding: 12px 0;
 					overflow-x: auto;
 					position: relative;
 					overflow-y: overlay;

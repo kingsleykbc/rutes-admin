@@ -33,8 +33,8 @@ const Login = () => {
 	 * PREFILL LOGIN FORM
 	 */
 	const handlePrefill = () => {
-		setEmail('jimmy@gmail.com');
-		setPassword('avatar');
+		setEmail('john.doe@example.com');
+		setPassword('password123');
 	};
 
 	// ===================================================================================================================

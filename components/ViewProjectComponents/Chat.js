@@ -54,7 +54,9 @@ const Chat = ({ data: { projectKey } }) => {
 			<style jsx>{`
 				.Chat {
 					display: flex;
-					height: calc(${height + ' - '} 56px);
+					height: calc(${height + ' - '} 57px);
+					min-width: 400px;
+					overflow-x: auto;
 				}
 				.chatRoom {
 					flex-grow: 1;

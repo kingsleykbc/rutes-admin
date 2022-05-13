@@ -34,12 +34,12 @@ const Details = ({ data }) => (
 				<pre>
 					<code className='code'>{`
 <div id="root"></div>						
-<script data-projectKey='${data.projectKey}' src='./bundle.min.js' />
 
 </* Optional (if you wan't to add the data-projectKey attribute) */>
 <script>
 	window.rutes_project_key = '${data.projectKey}';
 </script>
+<script data-projectKey='${data.projectKey}' src='./bundle.min.js' />
 						`}</code>
 				</pre>
 			</div>
