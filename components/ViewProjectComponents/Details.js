@@ -21,26 +21,31 @@ const Details = ({ data }) => (
 		{/* INSTALLATION */}
 		<DetailsSection title='Installation'>
 			<p>
-				Download the tester library from{' '}
-				<a download='bundle.min.js' href='../../docs/bundle.min.js'>
-					<Button type='text'> here</Button>
-				</a>{' '}
-				and copy the following snippet into site-under-test.
-				<br />
-				<br />
-				<b>IMPORTANT: </b> Include the code at after the body tag, not inside.
+				Copy the below code snippet into site-under-test. <b>NOTE: </b> Please ensure that you include the code at after the body tag, not
+				inside.
 			</p>
 			<div>
 				<pre>
-					<code className='code'>{`
+					<code className='code'>
+						{`
 <!-- RUTES TESTER LIBRARY IMPORT -->
 <div id="root"></div>						
 <script>	
 	// Optional (only if you don't add the data-projectKey attribute)
 	window.rutes_project_key = '${data.projectKey}'; 
 </script>
-<script data-projectKey='${data.projectKey}' src='`}<i className="codePlaceholder">{"path to bundle.min.js"}</i>{`'></script>
-						`}</code>
+<script 
+	data-projectKey='${data.projectKey}' 
+	src='https://cdn.jsdelivr.net/gh/kingsleykbc/rutes-tester-library/bundle.min.js'
+></script>
+						`}
+					</code>
+
+					{/* FORMER FINAL LINE OF SNIPPET
+					 <code className='code'>{`
+<script data-projectKey='${data.projectKey}' src='`}<i className="codePlaceholder">{"path to bundle.min.js"}</i>{`'></script>`}
+					</code> 
+						*/}
 				</pre>
 			</div>
 		</DetailsSection>
@@ -123,7 +128,9 @@ const Details = ({ data }) => (
 				color: var(--lightText);
 				font-weight: bold;
 			}
-
+			p {
+				line-height: 29px;
+			}
 			pre {
 				overflow: auto;
 				border-radius: 5px;
