@@ -2,7 +2,7 @@
 
 A react (next.js) dashboard application for the rutes project. This system is used by the Rutes admin to add and modify projects, define test actions, add and monitor participants, and view comprehensive test results (annotations, feedback, screen recordings, etc.).
 
-Application available at: [here](replace-later.com).
+Application available at: [here](https://rutes-admin.netlify.app/).
 
   
 ## Tools used
