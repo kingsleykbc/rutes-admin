@@ -36,21 +36,7 @@ const Annotation = ({
 		element: { tag }
 	}
 }) => {
-	const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
-	/**
-	 *
-	 */
-	const handleClick = e => {
-		setMouse({ x: e.pageX, y: e.pageY });
-	};
-
-	useEffect(() => {
-		document.addEventListener('click', handleClick);
-		return () => {
-			document.removeEventListener('click', handleClick);
-		};
-	});
 
 	return (
 		<div style={{ top: mouseY, left: mouseX }} className='Annotation'>
