@@ -44,7 +44,7 @@ const Test = ({ route, recordings }) => {
 		<div className='whiteboard'>
 			<div className='section'>
 				<div className='sectionInner'>
-					<IcCheck fontSize="1.5rem" color="#3ae8ab" />
+					<IcCheck fontSize='1.5rem' color='#3ae8ab' />
 					<span>
 						<b>{route}</b> test
 					</span>
@@ -66,6 +66,10 @@ const Test = ({ route, recordings }) => {
 
 			{/* STYLE */}
 			<style jsx>{`
+				.whiteboard {
+					margin-bottom: 8px;
+				}
+
 				video {
 					width: 100%;
 					max-width: 600px;

@@ -142,11 +142,11 @@ const Details = ({ data }) => (
 			}
 			.code {
 				line-height: 27px;
-				padding: 0 10px;
+				padding: 0 5px;
 				white-space: pre;
 				opacity: 0.8;
 				font-family: monospace;
-				font-size: 0.93rem;
+				font-size: 0.88rem;
 			}
 
 			.screenshot {
