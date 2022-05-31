@@ -36,7 +36,7 @@ const Details = ({ data }) => (
 </script>
 <script 
 	data-projectKey='${data.projectKey}' 
-	src='https://cdn.jsdelivr.net/gh/kingsleykbc/rutes-tester-library/bundle.min.js'
+	src='https://cdn.jsdelivr.net/gh/kingsleykbc/rutes-tester-library@latest/bundle.min.js'
 ></script>
 						`}
 					</code>
@@ -146,6 +146,7 @@ const Details = ({ data }) => (
 				white-space: pre;
 				opacity: 0.8;
 				font-family: monospace;
+				font-size: 0.93rem;
 			}
 
 			.screenshot {
