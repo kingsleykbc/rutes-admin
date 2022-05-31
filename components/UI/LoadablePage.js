@@ -4,13 +4,7 @@ import { BiErrorAlt as IcError } from 'react-icons/bi';
 
 const LoadablePage = ({ states: { error, loading }, errorMessage, loadingMessage }) => {
 	if (loading) return <BlankPage message={loadingMessage || 'Loading data...'} />;
-	if (error)
-		return (
-			<>
-				<pre>{JSON.stringify(error, null, 2)}</pre>
-				<BlankPage type='error' message={errorMessage || error.message} />
-			</>
-		);
+	if (error) return <BlankPage type='error' message={errorMessage || error.message} />;
 };
 
 export default LoadablePage;
