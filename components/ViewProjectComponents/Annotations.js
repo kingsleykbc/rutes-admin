@@ -22,7 +22,7 @@ const Annotations = ({ data: { screenshots, sessions }, refresh }) => {
 	// ===================================================================================================================
 	//  UI
 	// ===================================================================================================================
-	if (annotations.length === 0) return <EmptySet>No annotations</EmptySet>;
+
 	return (
 		<div className='Annotations'>
 			{/* TOP SECTION */}
@@ -53,7 +53,11 @@ const Annotations = ({ data: { screenshots, sessions }, refresh }) => {
 			</div>
 
 			{/* ANNOTATIONS */}
-			<RouteAnnotations screenshot={screenshot} annotations={annotations} device={device} />
+			{annotations.length === 0 ? (
+				<EmptySet margin='0'>No annotations</EmptySet>
+			) : (
+				<RouteAnnotations screenshot={screenshot} annotations={annotations} device={device} />
+			)}
 
 			{/* REFRESH BUTTON */}
 			<div className='refreshButton' onClick={() => refresh()}>
@@ -64,7 +68,7 @@ const Annotations = ({ data: { screenshots, sessions }, refresh }) => {
 			{/* STYLE */}
 			<style jsx>{`
 				.Annotations {
-					height: calc(${height + ' - '} 56px);
+					height: calc(${height + ' - '} 57px);
 					padding: 20px;
 					display: flex;
 					flex-direction: column;

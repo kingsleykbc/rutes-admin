@@ -15,12 +15,7 @@ const Annotations = ({ screenshots, session }) => {
 	// ===================================================================================================================
 	//  UI
 	// ===================================================================================================================
-	if (annotations.length === 0)
-		return (
-			<div style={{ marginTop: '20px' }}>
-				<h3>Annotations</h3> <EmptySet>No annotations</EmptySet>
-			</div>
-		);
+
 	return (
 		<div className='subSection'>
 			{/* TOP SECTION */}
@@ -42,7 +37,12 @@ const Annotations = ({ screenshots, session }) => {
 				</div>
 			</div>
 
-			<RouteAnnotations screenshot={screenshot} annotations={annotations} device={device} />
+			{/* ANNOTATIONS */}
+			{annotations.length === 0 ? (
+				<EmptySet>No annotations</EmptySet>
+			) : (
+				<RouteAnnotations screenshot={screenshot} annotations={annotations} device={device} />
+			)}
 
 			{/* STYLE */}
 			<style jsx>{`
